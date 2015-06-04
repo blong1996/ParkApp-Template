@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [ ])
 
-.controller("ExampleController", function($scope, $cordovaCamera, Camera) {
+.controller("CameraCtrl", function($scope, $cordovaCamera, Camera) {
  
     $scope.takePicture = function() {
         var options = { 

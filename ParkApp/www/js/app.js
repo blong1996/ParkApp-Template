@@ -113,7 +113,7 @@ angular.module('starter', ['ionic','ngCordova', 'starter.controllers', 'starter.
       views: {
         'tab-camera': {
           templateUrl: '',
-          controller: 'ExampleController'
+          controller: 'CameraCtrl'
         }
       }
     })
