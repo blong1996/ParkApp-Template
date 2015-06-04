@@ -5,7 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic','ngCordova', 'starter.controllers', 'starter.services'])
+
+
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -67,6 +69,55 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
+    .state('tab.home', {
+      url: '/home',
+      views: {
+        'tab-home': {
+          templateUrl: 'templates/tab-home.html', 
+          controller: 'HomeCtrl'
+        }
+      }
+    }) 
+
+    .state('tab.notifications', {
+      url: '/notifications',
+      views: {
+        'tab-notifications': {
+          templateUrl: 'templates/tab-notifications.html', 
+          controller: 'NotificationsCtrl'
+        }
+      }
+    }) 
+
+    .state('tab.profile', {
+      url: '/profile',
+      views: {
+        'tab-profile': {
+          templateUrl: 'templates/tab-profile.html', 
+          controller: 'ProfileCtrl'
+        }
+      }
+    }) 
+
+    .state('tab.map', {
+      url: '/map',
+      views: {
+        'tab-map': {
+          templateUrl: 'templates/tab-map.html', 
+          controller: 'MapCtrl'
+        }
+      }
+    }) 
+    .state('tab.camera', {
+      url: '/camera',
+      views: {
+        'tab-camera': {
+          templateUrl: '',
+          controller: 'ExampleController'
+        }
+      }
+    })
+
   .state('tab.account', {
     url: '/account',
     views: {
@@ -76,6 +127,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   });
+
+
+
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');
