@@ -17,7 +17,7 @@ angular.module('starter.services', [])
   },{
     id: 2,
     name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
+    lastText: '<("<) <( " )> (>")>',
     face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
   }, {
     id: 3,
