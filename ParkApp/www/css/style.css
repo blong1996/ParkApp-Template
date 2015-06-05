@@ -2,8 +2,16 @@
 .avatar {
     width:120px;
     margin: 5px;
-    border:5px solid white;
+    border:5px transparent blue;
     border-radius: 250px;
     -webkit-border-radius: 250px;
     -moz-border-radius: 250px;
+}
+.avatar1 {
+	 width:50px;
+    margin: 5px;
+    border:7px transparent blue;
+    border-radius: 30px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
 }
