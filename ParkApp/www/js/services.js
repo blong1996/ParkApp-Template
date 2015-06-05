@@ -47,9 +47,9 @@ angular.module('starter.services', [])
       return null;
     }
   };
-});
+})
 
-/*.factory('Camera', ['$q', function($q) {
+.factory('Camera', ['$q', function($q) {
 
   return {
     getPicture: function(options) {
@@ -65,4 +65,4 @@ angular.module('starter.services', [])
       return q.promise;
     }
   }
-}]);*/
+}]);
