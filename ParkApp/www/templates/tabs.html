@@ -16,7 +16,13 @@ navigation history that also transitions its views in and out.
   </ion-tab>
   
   <!-- Camera Tab 
+  <!-- Camera Tab 
+  <ion-tab title="Post" icon-off="ion-ios-camera-outline" icon-on="ion-ios-camera" ng-controller="CameraCtrl" ng-click="capturePhoto()">
 
+    <ion-nav-view name =""> <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}">
+    <img ng-show="imgURI === undefined" ng-src="http://placehold.it/300x300">
+    </ion-nav-view>
+  </ion-tab>
   </ion-tab>-->
  <!-- <ion-tab title="Post" icon-off="ion-ios-camera-outline" icon-on="ion-ios-camera" ng-controller="CameraCtrl" ng-onclick="takePicture()">
     <ion-nav-view name ="">
