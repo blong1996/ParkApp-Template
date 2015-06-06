@@ -7,15 +7,12 @@ angular.module('starter.controllers', [ ])
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
-  
 
-.controller('ProfileOptionsCtrl', function() {
-})
+.controller('ProfileOptionsCtrl', function() {})
 
 .controller('HomeCtrl', function($scope) {})
 
 .controller('NotificationsCtrl', function($scope) {})
-
 
 
 .controller('CameraCtrl', function($scope, Camera) {
@@ -38,7 +35,6 @@ angular.module('starter.controllers', [ ])
 
 
 .controller('ProfileCtrl', function($scope) {})
-
 
 
 .controller('MapCtrl', function($scope) {});
