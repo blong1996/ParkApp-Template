@@ -48,6 +48,8 @@ angular.module('starter.controllers', [ ])
 
 .controller('ProfileCtrl', function($scope) {})
 
+
+
 .controller('MapCtrl', function($scope) {})
 
 
