@@ -1,60 +1,16 @@
 <ion-view view-title="Home">
   <ion-content >
     <tab-slide-box>
-                   
-                    <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
-                        <ion-slide ion-slide-tab-label="home">
-                            <h1>Home content</h1>
-                        </ion-slide>
-                        <ion-slide>
-                            <h1>Games content</h1>
-                        </ion-slide>
-                        <ion-slide>
-                            <h1>Mail content</h1>
-                        </ion-slide>
-                        <ion-slide>
-                            <h1>Car content</h1>
-                        </ion-slide>
-                        <ion-slide>
-                            <h1>Profile content</h1>
-                        </ion-slide>
-
-                    </ion-slide-box>
-            </tab-slide-box>
-
-
-     <!-- <ion-tabs class="tabs-top">
-        <ion-slide-box on-slide-changed="slideHasChanged($index)">
-          <ion-tab title="New">
-            <ion-slide>
-              <div>
-                <H1>This is the New Page TEST TEST TEST TEST</H1>
-              </div>
-            </ion-slide>
-          </ion-tab>
-          <ion-tab title="Popular">
-            <ion-slide>
-              <div>
-                <H1>This is the Pop. Page</H1>
-              </div>
-            </ion-slide>
-          </ion-tab>
-        </ion-slide-box>
-      </ion-tabs>
-
-
-
-   <ion-slide-box on-slide-changed="slideHasChanged($index)">
-  <ion-slide>
-    <div class="box blue"><h1>BLUE</h1></div>
-  </ion-slide>
-  <ion-slide>
-    <div class="box yellow"><h1>YELLOW</h1></div>
-  </ion-slide>
-  <ion-slide>
-    <div class="box pink"><h1>PINK</h1></div>
-  </ion-slide>
-</ion-slide-box> -->
-
+    <tab-slide-box on-slide-changed="slideHasChanged($index)">
+      <ion-slide>
+        <div class="bar bar-header bar-dark"> <h1 class="title">NEW</h1>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="bar bar-header bar-dark"><h1 class"title">Popular
+        </h1></div>
+      </ion-slide>
+      
+    <tab-slide-box> 
   </ion-content>
 </ion-view>
