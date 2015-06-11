@@ -9,6 +9,7 @@ angular.module('starter.controllers', [ ])
   //});
 
 .controller('ProfileOptionsCtrl', function() {})
+.controller('OptionsEditCtrl', function() {})
 
 .controller('HomeCtrl', function($scope) {})
 
