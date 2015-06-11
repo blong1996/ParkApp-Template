@@ -10,7 +10,7 @@ angular.module('starter.controllers', [ ])
 
 .controller('ProfileOptionsCtrl', function() {})
 .controller('OptionsEditCtrl', function() {})
-
+.controller('OptionsLikedCtrl', function() {})
 .controller('HomeCtrl', function($scope) {})
 
 .controller('NotificationsCtrl', function($scope) {})

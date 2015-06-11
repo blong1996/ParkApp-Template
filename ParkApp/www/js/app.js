@@ -47,13 +47,22 @@ angular.module('starter', ['ionic','ngCordova',  'starter.controllers', 'starter
 		.state('tab.options-edit', {
 			url: '/options/edit',
 			views: {
-				'tab-profile': {
+				'profile-options': {
 					templateUrl: 'templates/options-edit.html',
 					controller: 'OptionsEditCtrl'
 				}
 			}
 		})
 
+		.state('tab.options-liked', {
+			url: '/options/liked',
+			views: {
+				'profile-options': {
+					templateUrl: 'templates/options-liked.html',
+					controller: 'OptionsLikedCtrl'
+				}
+			}
+		})
 		.state('tab.home', {
 			url: '/home',
 			views: {
