@@ -1,17 +1,13 @@
 
 <ion-view  padding ="true" view-title="Capture " >
-  <ion-content class="padding">
-   
+  <ion-content class="padding">   
     <button ng-click="takePicture();">Capture Photo</button> <br>
     <button ng-click="capturePhotoEdit();">Capture Editable Photo</button> <br>
     <button ng-click="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
     <button ng-click="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
     <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}">
     <img ng-show="imgURI === undefined" ng-src="http://placehold.it/300x300">
-
     <!--<img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
     <img style="display:none;" id="largeImage" src="" />-->
- 
-
   </ion-content>
 </ion view>
