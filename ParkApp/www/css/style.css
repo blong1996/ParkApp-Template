@@ -16,11 +16,11 @@
     -moz-border-radius: 25px;
 }
 .avatar2{
-     width:170px;
+     width:185px;
 }
-.avatar3{
-    width:500px;
-    height:500px;
+.login{
+    background: url("http://www.publicdomainpictures.net/pictures/60000/nahled/abstract-modern-background-green-1379169367LTD.jpg") no-repeat center center fixed ;
+    background-size: cover;
 }
 .tabbed-slidebox .slider {
     height: 100%;

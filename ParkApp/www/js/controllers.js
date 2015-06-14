@@ -14,8 +14,13 @@ angular.module('ParkApp.controllers', [ ])
 	// options-edit controller
 .controller('OptionsLikedCtrl', function() {})
 	// options-liked controller
-.controller('OptionsLogoutCtrl', function() {})
+.controller('OptionsLogoutCtrl', function($scope, $state) {
 	// options-logout controller
+	$scope.logout = function() {
+		$state.go('login');
+	}
+})
+	
 .controller('OptionsPrivacyCtrl', function() {})
 	// options-privacy controller
 .controller('OptionsDeleteCtrl', function() {})
@@ -220,7 +225,7 @@ angular.module('ParkApp.controllers', [ ])
 	}).then(function (modal) {
 		$scope.modal = modal;
 	});*/
-	$scope.hardLogin = function() {
+	$scope.login = function() {
 		$state.go('tab.home');
 	}
 	$scope.createUser = function (user) {
