@@ -18,6 +18,9 @@
 .avatar2{
      width:185px;
 }
+.avatar3{
+    width:100px;
+}
 .login{
     background: url("https://c2.staticflickr.com/6/5524/9955139704_a196dffe64_b.jpg") no-repeat center center fixed ;
     background-size: cover;
