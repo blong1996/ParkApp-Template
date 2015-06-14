@@ -1,4 +1,10 @@
-angular.module('starter.services', [])
+angular.module('ParkApp.services', ['firebase'])
+
+.factory("Auth", ["$firebase", "$rootScope",
+  function ($firebaseAuth, $rootScope) {
+    var ref = new Firebase(firebaseUrl);
+    return $firebaseAuth(ref);
+  }])
 
 .factory('Camera', ['$q', function($q) {
 

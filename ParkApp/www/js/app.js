@@ -1,9 +1,9 @@
 
-angular.module('starter', ['ionic','ngCordova',  'starter.controllers', 'starter.services'])
+angular.module('ParkApp', ['ionic','ngCordova',  'ParkApp.controllers', 'ParkApp.services', 'firebase'])
 
 
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope) {
 	$ionicPlatform.ready(function() {
 		// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
 		// for form inputs)
@@ -13,6 +13,9 @@ angular.module('starter', ['ionic','ngCordova',  'starter.controllers', 'starter
 		if (window.StatusBar) {
 			// org.apache.cordova.statusbar required
 			StatusBar.styleLightContent();
+		}
+		$rootScope.logout = function () {
+			console.log("Logging out from the app");
 		}
 	});
 })
@@ -25,6 +28,11 @@ angular.module('starter', ['ionic','ngCordova',  'starter.controllers', 'starter
 	// Each state's controller can be found in controllers.js
 	$stateProvider
 	// setup an abstract state for the tabs directive
+		.state('login', {
+			url: "/login",
+			templateUrl:"templates/login.html",
+			controller: 'LoginCtrl'
+	})
 		.state('tab', {
 		url: "/tab",
 		abstract: true,
@@ -158,8 +166,9 @@ angular.module('starter', ['ionic','ngCordova',  'starter.controllers', 'starter
 			}
 		});
 
+
 	// if none of the above states are matched, use this as the fallback
-	$urlRouterProvider.otherwise('/tab/home');
+	$urlRouterProvider.otherwise('/login');
 
 });
 
