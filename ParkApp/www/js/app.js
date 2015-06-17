@@ -55,6 +55,15 @@ parkApp.config(function($stateProvider, $urlRouterProvider) {
 				}
 			}
 		})
+		.state('tab.options-password', {
+			url: '/profile/options/password',
+			views: {
+				'tab-profile': {
+					templateUrl: 'templates/options-password.html',
+					controller: 'OptionsPasswordCtrl'
+				}
+			}
+		})
 		.state('tab.options-liked', {
 			url: '/profile/options/liked',
 			views: {

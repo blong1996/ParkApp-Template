@@ -33,6 +33,8 @@ parkAppControllers.controller('OptionsTermsCtrl', function() {})
 	// options-terms controller
 parkAppControllers.controller('OptionsProblemsCtrl', function() {})
 	// options-problems controller
+	parkAppControllers.controller('OptionsPasswordCtrl', function() {})
+	// options-password controller
 parkAppControllers.controller('HomeCtrl', function($scope) {})
 	// home controller
 parkAppControllers.controller('NotificationsCtrl', function($scope) {})
