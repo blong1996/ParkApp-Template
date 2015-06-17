@@ -1,9 +1,8 @@
+'use strict';
 
-angular.module('ParkApp', ['ionic','ngCordova',  'ParkApp.controllers', 'ParkApp.services', 'firebase'])
+var parkApp = angular.module('parkApp', ['ionic','ngCordova',  'parkAppControllers', 'parkAppServices', 'firebase'])
 
-
-
-.run(function($ionicPlatform, $rootScope) {
+parkApp.run(function($ionicPlatform, $rootScope) {
 	$ionicPlatform.ready(function() {
 		// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
 		// for form inputs)
@@ -14,13 +13,12 @@ angular.module('ParkApp', ['ionic','ngCordova',  'ParkApp.controllers', 'ParkApp
 			// org.apache.cordova.statusbar required
 			StatusBar.styleLightContent();
 		}
-		$rootScope.logout = function () {
-			console.log("Logging out from the app");
-		}
+
+		
 	});
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+parkApp.config(function($stateProvider, $urlRouterProvider) {
 
 	// Ionic uses AngularUI Router which uses the concept of states
 	// Learn more here: https://github.com/angular-ui/ui-router

@@ -1,12 +1,13 @@
-angular.module('ParkApp.services', ['firebase'])
+'use strict';
 
-.factory("Auth", ["$firebase", "$rootScope",
-  function ($firebaseAuth, $rootScope) {
-    var ref = new Firebase(firebaseUrl);
-    return $firebaseAuth(ref);
-  }])
+var parkAppServices = angular.module('parkAppServices', ['firebase'])
 
-.factory('Camera', ['$q', function($q) {
+parkAppServices.factory("Auth", function($firebaseAuth) {
+  var userRef = new Firebase("http//nczooapp.firebaseio.com/users");
+  return $firebaseAuth(userRef)
+})
+
+parkAppServices.factory('Camera', ['$q', function($q) {
 
   return {
     getPicture: function(options) {

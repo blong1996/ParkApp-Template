@@ -1,4 +1,6 @@
-angular.module('ParkApp.controllers', [ ])
+'use strict';
+
+var parkAppControllers = angular.module('parkAppControllers', [ ])
 
 	// With the new view caching in Ionic, Controllers are only called
 	// when they are recreated or on app start, instead of every page change.
@@ -8,34 +10,34 @@ angular.module('ParkApp.controllers', [ ])
 	//$scope.$on('$ionicView.enter', function(e) {
 	//});
 	 
-.controller('ProfileOptionsCtrl', function() {})
+parkAppControllers.controller('ProfileOptionsCtrl', function() {})
 	// profile-options controller
-.controller('OptionsEditCtrl', function() {})
+parkAppControllers.controller('OptionsEditCtrl', function() {})
 	// options-edit controller
-.controller('OptionsLikedCtrl', function() {})
+parkAppControllers.controller('OptionsLikedCtrl', function() {})
 	// options-liked controller
-.controller('OptionsLogoutCtrl', function($scope, $state) {
+parkAppControllers.controller('OptionsLogoutCtrl', function($scope, $state) {
 	// options-logout controller
 	$scope.logout = function() {
 		$state.go('login');
 	}
 })
 	
-.controller('OptionsPrivacyCtrl', function() {})
+parkAppControllers.controller('OptionsPrivacyCtrl', function() {})
 	// options-privacy controller
-.controller('OptionsDeleteCtrl', function() {})
+parkAppControllers.controller('OptionsDeleteCtrl', function() {})
 	// options-delete controller
-.controller('OptionsResetCtrl', function() {})
+parkAppControllers.controller('OptionsResetCtrl', function() {})
 	// options-reset controller
-.controller('OptionsTermsCtrl', function() {})
+parkAppControllers.controller('OptionsTermsCtrl', function() {})
 	// options-terms controller
-.controller('OptionsProblemsCtrl', function() {})
+parkAppControllers.controller('OptionsProblemsCtrl', function() {})
 	// options-problems controller
-.controller('HomeCtrl', function($scope) {})
+parkAppControllers.controller('HomeCtrl', function($scope) {})
 	// home controller
-.controller('NotificationsCtrl', function($scope) {})
+parkAppControllers.controller('NotificationsCtrl', function($scope) {})
 	// notifications controller
-.controller('CameraCtrl', function($scope, Camera) {
+parkAppControllers.controller('CameraCtrl', function($scope, Camera) {
 	// cmera controller
 		var pictureSource;   // picture source
 		var destinationType; // sets the format of returned value
@@ -106,7 +108,7 @@ angular.module('ParkApp.controllers', [ ])
 			alert('Failed because: ' + message);
 		}
 })
-.controller("ExampleController", function($scope, $cordovaCamera, Camera) {
+parkAppControllers.controller("ExampleController", function($scope, $cordovaCamera, Camera) {
  var pictureSource;   // picture source
     var destinationType; // sets the format of returned value
 
@@ -213,77 +215,60 @@ angular.module('ParkApp.controllers', [ ])
     }
  
 })
-.controller('LoginCtrl', function ($scope, $ionicModal, $firebaseAuth, $ionicLoading, $rootScope, $state) {
-	// login controller
-	console.log('Login Controller Initialized');
+parkAppControllers.controller('LoginCtrl', function ($scope,  $firebaseAuth, $location, $state, Auth) {
+	
+	$scope.loginWithFacebook = function() {
+		Auth.$authWithOAuthRedirect("facebook").then(function(authData) {
+      // User successfully logged in
+    }).catch(function(error) {
+      if (error.code === "TRANSPORT_UNAVAILABLE") {
+        Auth.$authWithOAuthPopup("facebook").then(function(authData) {
+          // User successfully logged in. We can log to the console
+          // since we’re using a popup here
+          console.log(authData);
+        });
+      } else {
+        // Another error occurred
+        console.log(error);
+      }
+    });
+	}
 
-	//var ref = new Firebase($scope.firebaseUrl);
-	//var auth = $firebaseAuth(ref);
-
-	/*$ionicModal.fromTemplateUrl('templates/signup.html', {
-		scope: $scope
-	}).then(function (modal) {
-		$scope.modal = modal;
-	});*/
 	$scope.login = function() {
-		$state.go('tab.home');
-	}
-	$scope.createUser = function (user) {
-		console.log("Create User function is caled");
-		if (user & user.email && user.password && user.displayname) {
-			$ionicLoading.show({
-				template: 'Signing Up...'
-			});
-			auth.$createUser({
-				email: user.email,
-				password: user.password
-			}).then(function (userData) {
-					alert("User created successfully!");
-					ref.child("users").child(userData.uid).set({
-						email: user.email,
-						displayname: user.displayname
-					});
-					$ionicLoading.hide();
-					$scope.modal.hide();
-			}).catch(function (error) {
-					alert("Error: "+ error);
-					$ionicLoading.hide();
-			});	
-		} else 
-			 alert("Please fill all details"); 
+		Auth.$authWithPassword({
+		  email: $scope.email,
+		  password: $scope.password
+		}).then(function(authData) {
+		  console.log("Logged in as:", authData.uid);
+		  $state.go('tab.home');
+		}).catch(function(error) {
+		  console.error("Authentication failed:", error);
+		});
 	}
 
-	$scope.signIn = function (user) {
-
-		if(user && user.email && user.pwdForLogin) {
-			$ionicLoading.show({
-					template: 'Signing in...'
-			});
-			auth.$authWithPassword({
-					email: user.email,
-					password: user.pwdForLogin
-			}).then(function (authData) {
-					console.log("Logged in as:" + authData.uid);
-					ref.child("users").child(authData.uid).once('value', function (snapshot) {
-						var val = snapshot.val();
-						// To update AngularJS $scope either use $apply or $timeout
-						$scope.$apply(function () {
-							$rootScope.displayName = val;
-						});
-					});
-					$ionicLoading.hide();
-					$state.go('tab.home');
-			}).catch(function (error) {
-					alert("Authentication failed:" + error.message);
-					$ionicLoading.hide();
-			});
-		} else
-		 		alert("Please enter email and password both");
-	}
+	$scope.register = function() {
+    Auth.$createUser({
+      email: $scope.email,
+      password: $scope.password
+    }).then(function(userData) {
+      console.log("User created with uid: " + userData.uid);
+      $state.go('tab.home');
+    }).catch(function(error) {
+      console.log(error);
+    });
+  };
 })
 
-.controller('ProfileCtrl', function($scope) {})
+parkAppControllers.controller('ProfileCtrl', function($scope) {})
 	// profile controller
-.controller('MapCtrl', function($scope) {});
+parkAppControllers.controller('MapCtrl', function($scope) {})
 	// map controller
+parkAppControllers.controller('DataCtrl', ['$scope', '$http',function($scope, $http) {
+	// data controller
+	$http.get("http:/data/users.json")
+	.success(function(response)
+	{
+		$scope.users = response;
+	});
+}]);
 
