@@ -23,7 +23,7 @@
     width:100px;
 }
 .login{
-    background: url("https://c2.staticflickr.com/6/5524/9955139704_a196dffe64_b.jpg") no-repeat center center fixed ;
+    background: url("../img/zoo.png") no-repeat center center fixed ;
     background-size: cover;
 }
 .tabbed-slidebox .slider {
