@@ -1,6 +1,6 @@
 'use strict';
 
-var parkApp = angular.module('parkApp', ['ionic','ngCordova',  'parkAppControllers', 'parkAppServices', 'firebase'])
+var parkApp = angular.module('parkApp', ['ionic','ngCordova',  'parkAppControllers', 'parkAppServices',  'firebase'])
 
 parkApp.run(function($ionicPlatform, $rootScope) {
 	$ionicPlatform.ready(function() {
@@ -13,10 +13,12 @@ parkApp.run(function($ionicPlatform, $rootScope) {
 			// org.apache.cordova.statusbar required
 			StatusBar.styleLightContent();
 		}
-
-		
 	});
 })
+
+parkApp.constant('FIREBASE_URI', 'http//nczooapp.firebaseio.com/');
+
+
 
 parkApp.config(function($stateProvider, $urlRouterProvider) {
 

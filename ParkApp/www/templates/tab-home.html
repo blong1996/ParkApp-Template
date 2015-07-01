@@ -1,7 +1,17 @@
 <ion-view title="Home"  >
-  <ion-content>
-    <div id= "fontID" class="row">
-      <div id= "fontID" class= "col col-50">
+  <ion-content >
+    <div id= "fontID" class="row"> 
+      <div id= "fontID" class= "col col-50" ng-repeat="photo in photos">
+        <img class="avatar2" src="{{photo.PicSource}}">
+        <div id= "fontID">
+          <i class="icon ion-thumbsup"></i>
+          <font size="1">{{photo.Likes.length}}</font>
+          <i>{{photo.Caption}}</i>
+        </div>
+      </div>
+
+
+      <!--<div id= "fontID" class= "col col-50">
         <img class="avatar2" src="http://wbtv.images.worldnow.com/images/21848655_BG1.jpg">
         <div id= "fontID">
           <i class="icon ion-thumbsup"></i>
@@ -72,7 +82,7 @@
           <font size="1">6</font>
         </div>
       </div>
-    </div>
+    </div>-->
     </div>
   </ion-content>
-</ion-view>
+</ion-view> 

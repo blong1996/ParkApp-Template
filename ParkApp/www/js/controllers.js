@@ -10,9 +10,14 @@ var parkAppControllers = angular.module('parkAppControllers', [ ])
 	//$scope.$on('$ionicView.enter', function(e) {
 	//});
 	 
-parkAppControllers.controller('ProfileOptionsCtrl', function() {})
+parkAppControllers.controller('ProfileOptionsCtrl', function($scope, Auth, Users, FIREBASE_URI) {
+
+
+})
 	// profile-options controller
-parkAppControllers.controller('OptionsEditCtrl', function() {})
+parkAppControllers.controller('OptionsEditCtrl', function($scope, $state, Auth) {
+	
+})
 	// options-edit controller
 parkAppControllers.controller('OptionsLikedCtrl', function() {})
 	// options-liked controller
@@ -35,7 +40,12 @@ parkAppControllers.controller('OptionsProblemsCtrl', function() {})
 	// options-problems controller
 	parkAppControllers.controller('OptionsPasswordCtrl', function() {})
 	// options-password controller
-parkAppControllers.controller('HomeCtrl', function($scope) {})
+parkAppControllers.controller('HomeCtrl', function($scope, AppPhotos) {
+
+
+	$scope.photos = AppPhotos;
+
+})
 	// home controller
 parkAppControllers.controller('NotificationsCtrl', function($scope) {})
 	// notifications controller
@@ -217,7 +227,8 @@ parkAppControllers.controller("ExampleController", function($scope, $cordovaCame
     }
  
 })
-parkAppControllers.controller('LoginCtrl', function ($scope,  $firebaseAuth, $location, $state, Auth) {
+parkAppControllers.controller('LoginCtrl', ['$scope',  '$firebaseAuth', '$location', '$state', 'Auth', 
+	function ($scope, $firebaseAuth, $location, $state, Auth) {
 	
 	$scope.loginWithFacebook = function() {
 		Auth.$authWithOAuthRedirect("facebook").then(function(authData) {
@@ -236,7 +247,21 @@ parkAppControllers.controller('LoginCtrl', function ($scope,  $firebaseAuth, $lo
     });
 	}
 
+		// hard login as blong1996@gmail.com
 	$scope.login = function() {
+		Auth.$authWithPassword({
+		  email: "blong1996@gmail.com",
+		  password: "12345"
+		}).then(function(authData) {
+		  console.log("Logged in as:", authData.uid);
+		  $state.go('tab.home');
+		}).catch(function(error) {
+		  console.error("Authentication failed:", error);
+		});
+	}
+
+		// real login code for firebase
+	/*$scope.login = function() {
 		Auth.$authWithPassword({
 		  email: $scope.email,
 		  password: $scope.password
@@ -246,7 +271,7 @@ parkAppControllers.controller('LoginCtrl', function ($scope,  $firebaseAuth, $lo
 		}).catch(function(error) {
 		  console.error("Authentication failed:", error);
 		});
-	}
+	}*/
 
 	$scope.register = function() {
     Auth.$createUser({
@@ -254,14 +279,38 @@ parkAppControllers.controller('LoginCtrl', function ($scope,  $firebaseAuth, $lo
       password: $scope.password
     }).then(function(userData) {
       console.log("User created with uid: " + userData.uid);
+
       $state.go('tab.home');
     }).catch(function(error) {
       console.log(error);
     });
+		//$state.go('tab.home');
   };
-})
+}])
 
-parkAppControllers.controller('ProfileCtrl', function($scope) {})
+parkAppControllers.controller('ProfileCtrl', function($scope, Auth, Users) {
+
+	
+	var ref = new Firebase("http//nczooapp.firebaseio.com/");
+	var authData = ref.getAuth();
+  var User = new Firebase("http//nczooapp.firebaseio.com/Users/"+authData.uid);
+
+console.log(authData.uid)
+	User.child("FullName").on("value", function(snapshot) {
+		$scope.fullName = snapshot.val();
+		console.log(snapshot.val());
+	})
+	User.child("ProfilePic").on("value", function(snapshot) {
+		$scope.profilePic = snapshot.val();
+	}) 
+	User.child("Pictures").on("value", function(snapshot) {
+		$scope.pictures = snapshot.val();
+	})
+	User.child("TotalLikes").on("value", function(snapshot) {
+		$scope.likes = snapshot.val();
+	})
+
+})
 	// profile controller
 parkAppControllers.controller('MapCtrl', function($scope) {})
 	// map controller

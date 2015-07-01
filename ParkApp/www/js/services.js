@@ -7,6 +7,17 @@ parkAppServices.factory("Auth", function($firebaseAuth) {
   return $firebaseAuth(userRef)
 })
 
+parkAppServices.factory("Users", function($firebaseArray) {
+  var users = new Firebase("http//nczooapp.firebaseio.com/Users");
+  return $firebaseArray(users)
+})
+
+parkAppServices.factory("AppPhotos", function($firebaseArray) {
+  var Photos = new Firebase("http//nczooapp.firebaseio.com/AppPictures");
+  return $firebaseArray(Photos)
+})
+
+
 parkAppServices.factory('Camera', ['$q', function($q) {
 
   return {

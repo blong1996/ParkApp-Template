@@ -4,12 +4,12 @@
   </ion-nav-buttons>
   <div class="bar bar-subheader bar-assertive" style="height:21%;">
     <div style="width: 45%; float:left" >
-      <img class="avatar" src="../img/zach.png"></img>
+      <img class="avatar" src="{{profilePic}}"></img>
     </div>
     <div id= "fontID" style="width: 55%; float:right">
-      <br><b>Zach Cafarelli</b></br>
-      <br><b>Posts:</b> 9</br>
-      <br><b>Likes:</b> 25</br>
+      <br><b>{{fullName}}</b></br>
+      <br><b>Posts:</b> {{pictures.length}}</br>
+      <br><b>Likes:</b> {{likes}}</br>
     </div>
   </div>
   <ion-content  >
@@ -21,78 +21,15 @@
     <br>
     <br>
     <div id= "fontID" class="row">
-      <div id= "fontID" class= "col col-50">
-        <img class="avatar2" src="http://wbtv.images.worldnow.com/images/21848655_BG1.jpg">
+    
+         <div id= "fontID" class= "col col-50" ng-repeat="photo in pictures ">
+        <img class="avatar2" src="{{photo.PicSource}}">
         <div id= "fontID">
           <i class="icon ion-thumbsup"></i>
-          <font size="1">6</font>
+          <font size="1">{{photo.Likes.length}}</font>
+          <i>{{photo.Caption}}</i>
         </div>
-      </div>
-      <div id= "fontID" class= "col col 50">
-        <img class="avatar2" src="http://localtvwghp.files.wordpress.com/2013/07/gorilla-baby-maleinsert.jpg?w=770">
-        <div id= "fontID">
-          <i class="icon ion-thumbsup"></i>
-          <font size="1">1</font>
-        </div>
-      </div>
-    </div>
-    <div id= "fontID" class="row">
-      <div id= "fontID" class= "col col-50">
-        <img class="avatar2" src="http://www.nczoo.com/Portals/0/get-involved-pic.jpg">
-        <div id= "fontID">
-          <i class="icon ion-thumbsup"></i>
-          <font size="1">6</font>
-        </div>
-      </div>
-      <div id= "fontID" class= "col col 50">
-        <img class="avatar2" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSRriWiFMdeF1Ckg27_RclQISAGa88BmX-gwbJVKOlKY7LvCuW0NQ">
-        <div>
-          <i class="icon ion-thumbsup"></i>
-          <font size="1">1</font>
-        </div>
-      </div>
-    </div>
-    <div id= "fontID" class="row">
-      <div class= "col col-50">
-        <img class="avatar2" src="http://www.nczoo.com/Portals/0/zoo-in-action-pic.jpg">
-        <div id= "fontID">
-          <i class="icon ion-thumbsup"></i>
-          <font size="1">6</font>
-        </div>
-      </div>
-      <div id= "fontID" class= "col col 50">
-        <img class="avatar2" src="http://www.fourthirds-user.com/galleries/data/500/NC_Zoo_-_ROPC_254.jpg">
-        <div>
-          <i class="icon ion-thumbsup"></i>
-          <font size="1">1</font>
-        </div>
-      </div>
-    </div>
-    <div id= "fontID" class="row">
-      <div id= "fontID" class= "col col-50">
-        <img class="avatar2" src="http://nc-culture.com/wp-content/uploads/2013/08/polar-bear-nc-zoo-commons.jpg">
-        <div id= "fontID">
-          <i class="icon ion-thumbsup"></i>
-          <font size="1">6</font>
-        </div>
-      </div>
-      <div id= "fontID" class= "col col 50">
-        <img class="avatar2" src="http://www.visitgreensboronc.com/sites/default/files/u54/images/trex.jpg">
-        <div id= "fontID">
-          <i class="icon ion-thumbsup"></i>
-          <font size="1">1</font>
-        </div>
-      </div>
-    </div>
-    <div id= "fontID" class="row">
-      <div id= "fontID" class= "col col-50">
-        <img class="avatar2" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS1BJWZ-CaXqFDaIXeDX3b17iH2SVHnGGjY2mL87iMdz8CaIxSY">
-        <div id= "fontID">
-          <i class="icon ion-thumbsup"></i>
-          <font size="1">6</font>
-        </div>
-      </div>
-    </div>
+ 
     </div>
   </ion-content>
 </ion-view>
