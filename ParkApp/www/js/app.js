@@ -173,6 +173,15 @@ parkApp.config(function($stateProvider, $urlRouterProvider) {
 					controller: 'ExampleController'
 				}
 			}
+		})
+		.state('camera.tag', {
+			url: '/camera',
+			views: {
+				'tag-camera': {
+					templateUrl: 'templates/camera-tag.html',
+					controller: 'CameraTagCtrl'
+				}
+			}
 		});
 
 

@@ -38,8 +38,10 @@ parkAppControllers.controller('OptionsTermsCtrl', function() {})
 	// options-terms controller
 parkAppControllers.controller('OptionsProblemsCtrl', function() {})
 	// options-problems controller
-	parkAppControllers.controller('OptionsPasswordCtrl', function() {})
+parkAppControllers.controller('OptionsPasswordCtrl', function() {})
 	// options-password controller
+parkAppControllers.controller('CameraTagCtrl', function() {})
+	// camera-tag controller
 parkAppControllers.controller('HomeCtrl', function($scope, AppPhotos) {
 	$scope.photos = AppPhotos;
 	
