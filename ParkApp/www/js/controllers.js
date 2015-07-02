@@ -40,7 +40,7 @@ parkAppControllers.controller('OptionsProblemsCtrl', function() {})
 	// options-problems controller
 parkAppControllers.controller('OptionsPasswordCtrl', function() {})
 	// options-password controller
-parkAppControllers.controller('CameraTagCtrl', function() {})
+parkAppControllers.controller('AttractionsCtrl', function() {})
 	// camera-tag controller
 parkAppControllers.controller('HomeCtrl', function($scope, AppPhotos) {
 	$scope.photos = AppPhotos;
@@ -273,8 +273,9 @@ parkAppControllers.controller('LoginCtrl', ['$scope',  '$firebaseAuth', '$locati
 		});
 	}*/
 
+
 	$scope.register = function() {
-    Auth.$createUser({
+    /*Auth.$createUser({
       email: $scope.email,
       password: $scope.password
     }).then(function(userData) {
@@ -283,8 +284,7 @@ parkAppControllers.controller('LoginCtrl', ['$scope',  '$firebaseAuth', '$locati
       $state.go('tab.home');
     }).catch(function(error) {
       console.log(error);
-    });
-		//$state.go('tab.home');
+    }); */	
   };
 }])
 
@@ -296,6 +296,9 @@ parkAppControllers.controller('ProfileCtrl', function($scope, Auth, Users) {
   var User = new Firebase("http//nczooapp.firebaseio.com/Users/"+authData.uid);
 
 console.log(authData.uid)
+	User.child("Username").on("value", function(snapshot) {
+		$scope.Username = snapshot.val();
+	})
 	User.child("FullName").on("value", function(snapshot) {
 		$scope.fullName = snapshot.val();
 		console.log(snapshot.val());

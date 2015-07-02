@@ -174,16 +174,16 @@ parkApp.config(function($stateProvider, $urlRouterProvider) {
 				}
 			}
 		})
-		.state('camera.tag', {
-			url: '/camera',
+		
+		.state('tab.attractions-tag', {
+			url: '/camera/attractions-tag',
 			views: {
-				'tag-camera': {
-					templateUrl: 'templates/camera-tag.html',
-					controller: 'CameraTagCtrl'
+				'tab-camera': {
+					templateUrl: 'templates/attractions-tag.html',
+					controller: 'AttractionsCtrl'
 				}
 			}
 		});
-
 
 	// if none of the above states are matched, use this as the fallback
 	$urlRouterProvider.otherwise('/login');

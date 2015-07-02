@@ -1,8 +1,9 @@
-<ion-view view-title="Profile" >
+<ion-view view-title="{{Username}}" >
   <ion-nav-buttons side="right">
     <a class="button button-small; icon ion-android-settings"   ui-sref="tab.profile-options"></a>
   </ion-nav-buttons>
-  <div class="bar bar-subheader bar-assertive" style="height:21%;">
+  <ion-content>
+  <div class="bar  bar-assertive" style="height:10%;">
     <div style="width: 45%; float:left" >
       <img class="avatar" src="{{profilePic}}"></img>
     </div>
@@ -12,7 +13,7 @@
       <br><b>Likes:</b> {{likes}}</br>
     </div>
   </div>
-  <ion-content  >
+  
     <br>
     <br>
     <br>
@@ -23,6 +24,14 @@
     
     <div id= "fontID" class="row" ng-repeat="photo in pictures | orderBy: '-ID'">
       <div id= "fontID" class= "col col-100" >
+        <div class="row">
+          <div class="col col-50">
+             <i>{{photo.Username}}</i>
+          </div>
+          <div class="col col-50 text-right">
+             <i>{{photo.Date}}</i>
+          </div>
+        </div>
         <img class="avatar2" src="{{photo.PicSource}}">
         <div id= "fontID">
           <i class="icon ion-thumbsup"></i>
