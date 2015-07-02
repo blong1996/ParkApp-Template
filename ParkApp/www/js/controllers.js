@@ -41,10 +41,8 @@ parkAppControllers.controller('OptionsProblemsCtrl', function() {})
 	parkAppControllers.controller('OptionsPasswordCtrl', function() {})
 	// options-password controller
 parkAppControllers.controller('HomeCtrl', function($scope, AppPhotos) {
-
-
 	$scope.photos = AppPhotos;
-
+	
 })
 	// home controller
 parkAppControllers.controller('NotificationsCtrl', function($scope) {})

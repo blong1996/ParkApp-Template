@@ -20,16 +20,16 @@
     <br>
     <br>
     <br>
-    <div id= "fontID" class="row">
     
-         <div id= "fontID" class= "col col-50" ng-repeat="photo in pictures ">
+    <div id= "fontID" class="row" ng-repeat="photo in pictures | orderBy: '-ID'">
+      <div id= "fontID" class= "col col-100" >
         <img class="avatar2" src="{{photo.PicSource}}">
         <div id= "fontID">
           <i class="icon ion-thumbsup"></i>
           <font size="1">{{photo.Likes.length}}</font>
           <i>{{photo.Caption}}</i>
         </div>
- 
     </div>
+    
   </ion-content>
 </ion-view>

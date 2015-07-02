@@ -2,7 +2,7 @@
   "Users": { 
     "simplelogin:4": {
       "uid": "simplelogin:4","FullName": "Zachary Cafarelli", "Email": "zcafarelli@gmail.com", 
-      "Username":"zach_attach", "Password": "1234", "PhoneNumber": "",
+      "Username":"zach_attach", "Password": "1234", "PhoneNumber": "910-797-6999",
        "ProfilePic": "../img/zach.png", "TotalLikes": 2,
       "Pictures": [{
         "ID": 0, "PicSource": "http://wbtv.images.worldnow.com/images/21848655_BG1.jpg", 
