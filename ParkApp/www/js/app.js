@@ -44,7 +44,7 @@ parkApp.config(function($stateProvider, $urlRouterProvider) {
 			views: {
 				'tab-profile': {
 					templateUrl: 'templates/profile-options.html',
-					controller: 'ProfileOptionsCtrl'
+					controller: 'ProfileCtrl'
 				}
 			}
 		})
@@ -53,7 +53,7 @@ parkApp.config(function($stateProvider, $urlRouterProvider) {
 			views: {
 				'tab-profile': {
 					templateUrl: 'templates/options-edit.html',
-					controller: 'OptionsEditCtrl'
+					controller: 'ProfileCtrl'
 				}
 			}
 		})
@@ -62,7 +62,7 @@ parkApp.config(function($stateProvider, $urlRouterProvider) {
 			views: {
 				'tab-profile': {
 					templateUrl: 'templates/options-password.html',
-					controller: 'OptionsPasswordCtrl'
+					controller: 'ProfileCtrl'
 				}
 			}
 		})
@@ -71,7 +71,7 @@ parkApp.config(function($stateProvider, $urlRouterProvider) {
 			views: {
 				'tab-profile': {
 					templateUrl: 'templates/options-liked.html',
-					controller: 'OptionsLikedCtrl'
+					controller: 'ProfileCtrl'
 				}
 			}
 		})
@@ -80,7 +80,7 @@ parkApp.config(function($stateProvider, $urlRouterProvider) {
 			views: {
 				'tab-profile': {
 					templateUrl: 'templates/options-logout.html',
-					controller: 'OptionsLogoutCtrl'
+					controller: 'ProfileCtrl'
 				}
 			}
 		})
@@ -89,7 +89,7 @@ parkApp.config(function($stateProvider, $urlRouterProvider) {
 			views: {
 				'tab-profile': {
 					templateUrl: 'templates/options-privacy.html',
-					controller: 'OptionsPrivacyCtrl'
+					controller: 'ProfileCtrl'
 				}
 			}
 		})
@@ -98,7 +98,7 @@ parkApp.config(function($stateProvider, $urlRouterProvider) {
 			views: {
 				'tab-profile': {
 					templateUrl: 'templates/options-problems.html',
-					controller: 'OptionsProblemsCtrl'
+					controller: 'ProfileCtrl'
 				}
 			}
 		})
@@ -107,7 +107,7 @@ parkApp.config(function($stateProvider, $urlRouterProvider) {
 			views: {
 				'tab-profile': {
 					templateUrl: 'templates/options-reset.html',
-					controller: 'OptionsResetCtrl'
+					controller: 'ProfileCtrl'
 				}
 			}
 		})
@@ -116,7 +116,7 @@ parkApp.config(function($stateProvider, $urlRouterProvider) {
 			views: {
 				'tab-profile': {
 					templateUrl: 'templates/options-terms.html',
-					controller: 'OptionsTermsCtrl'
+					controller: 'ProfileCtrl'
 				}
 			}
 		})
@@ -125,7 +125,7 @@ parkApp.config(function($stateProvider, $urlRouterProvider) {
 			views: {
 				'tab-profile': {
 					templateUrl: 'templates/options-delete.html',
-					controller: 'OptionsDeleteCtrl'
+					controller: 'ProfileCtrl'
 				}
 			}
 		})

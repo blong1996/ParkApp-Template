@@ -9,48 +9,26 @@ var parkAppControllers = angular.module('parkAppControllers', [ ])
 	//
 	//$scope.$on('$ionicView.enter', function(e) {
 	//});
-	 
-parkAppControllers.controller('ProfileOptionsCtrl', function($scope, Auth, Users, FIREBASE_URI) {
-
-
-})
-	// profile-options controller
-parkAppControllers.controller('OptionsEditCtrl', function($scope, $state, Auth) {
 	
-})
-	// options-edit controller
-parkAppControllers.controller('OptionsLikedCtrl', function() {})
-	// options-liked controller
-parkAppControllers.controller('OptionsLogoutCtrl', function($scope, $state) {
-	// options-logout controller
-	$scope.logout = function() {
-		$state.go('login');
-	}
-})
-	
-parkAppControllers.controller('OptionsPrivacyCtrl', function() {})
-	// options-privacy controller
-parkAppControllers.controller('OptionsDeleteCtrl', function() {})
-	// options-delete controller
-parkAppControllers.controller('OptionsResetCtrl', function() {})
-	// options-reset controller
-parkAppControllers.controller('OptionsTermsCtrl', function() {})
-	// options-terms controller
-parkAppControllers.controller('OptionsProblemsCtrl', function() {})
-	// options-problems controller
-parkAppControllers.controller('OptionsPasswordCtrl', function() {})
-	// options-password controller
+		// Attractions Controller
 parkAppControllers.controller('AttractionsCtrl', function() {})
-	// camera-tag controller
+	
+		
+		// Home Controller
 parkAppControllers.controller('HomeCtrl', function($scope, AppPhotos) {
 	$scope.photos = AppPhotos;
-	
+	  // Returns all photos in app	
 })
-	// home controller
+
+	
+
+		// Notifications Controller
 parkAppControllers.controller('NotificationsCtrl', function($scope) {})
-	// notifications controller
+	
+		
+		// Camera Controller
 parkAppControllers.controller('CameraCtrl', function($scope, Camera) {
-	// cmera controller
+	
 		var pictureSource;   // picture source
 		var destinationType; // sets the format of returned value
 		// Wait for device API libraries to load
@@ -227,6 +205,8 @@ parkAppControllers.controller("ExampleController", function($scope, $cordovaCame
     }
  
 })
+
+		// Login Controller
 parkAppControllers.controller('LoginCtrl', ['$scope',  '$firebaseAuth', '$location', '$state', 'Auth', 
 	function ($scope, $firebaseAuth, $location, $state, Auth) {
 	
@@ -247,20 +227,21 @@ parkAppControllers.controller('LoginCtrl', ['$scope',  '$firebaseAuth', '$locati
     });
 	}
 
-		// hard login as blong1996@gmail.com
-	$scope.login = function() {
+		// hard login 
+	 $scope.login = function() {
 		Auth.$authWithPassword({
-		  email: "blong1996@gmail.com",
-		  password: "12345"
+		  email: "zcafarelli@gmail.com",
+		  password: "1234"
 		}).then(function(authData) {
 		  console.log("Logged in as:", authData.uid);
 		  $state.go('tab.home');
 		}).catch(function(error) {
 		  console.error("Authentication failed:", error);
 		});
-	}
+	} 
 
 		// real login code for firebase
+		// login Firebase user
 	/*$scope.login = function() {
 		Auth.$authWithPassword({
 		  email: $scope.email,
@@ -272,6 +253,7 @@ parkAppControllers.controller('LoginCtrl', ['$scope',  '$firebaseAuth', '$locati
 		  console.error("Authentication failed:", error);
 		});
 	}*/
+			
 
 
 	$scope.register = function() {
@@ -286,43 +268,86 @@ parkAppControllers.controller('LoginCtrl', ['$scope',  '$firebaseAuth', '$locati
       console.log(error);
     }); */	
   };
+  		// registers new Firebase user
 }])
 
-parkAppControllers.controller('ProfileCtrl', function($scope, Auth, Users) {
+		// Profile Controller
+parkAppControllers.controller('ProfileCtrl', function($scope, Auth) {
 
-	
 	var ref = new Firebase("http//nczooapp.firebaseio.com/");
 	var authData = ref.getAuth();
   var User = new Firebase("http//nczooapp.firebaseio.com/Users/"+authData.uid);
+  var userEmail
+  var userPassword
 
-console.log(authData.uid)
 	User.child("Username").on("value", function(snapshot) {
-		$scope.Username = snapshot.val();
-	})
+		$scope.username = snapshot.val();
+	});
 	User.child("FullName").on("value", function(snapshot) {
 		$scope.fullName = snapshot.val();
-		console.log(snapshot.val());
-	})
+	});
 	User.child("ProfilePic").on("value", function(snapshot) {
 		$scope.profilePic = snapshot.val();
-	}) 
+	});
 	User.child("Pictures").on("value", function(snapshot) {
 		$scope.pictures = snapshot.val();
-	})
+	});
 	User.child("TotalLikes").on("value", function(snapshot) {
 		$scope.likes = snapshot.val();
-	})
+	});
+  User.child("LikedPictures").on("value", function(snapshot) {
+  	$scope.likedPics = snapshot.val();
+  });
+  User.child("PhoneNumber").on("value", function(snapshot) {
+  	$scope.number = snapshot.val();
+  });
+  User.child("Email").on("value", function(snapshot) {
+  	$scope.email = snapshot.val();
+  	userEmail = snapshot.val();
+  });
+  User.child("Password").on("value", function(snapshot) {
+  	userPassword = snapshot.val();
+  }); 
+  $scope.profileEditSave = function() {
+  	ref.changeEmail({
+		  oldEmail : userEmail,
+		  newEmail : $scope.newEmail,
+		  password : userPassword
+			}, function(error) {
+			  if (error === null) {
+			    console.log("Email changed successfully");
+			  } else {
+			    console.log("Error changing email:", error);
+			  }
+		});
+
+  };
+  $scope.save = function() {
+  };
+  $scope.changePassword = function () {
+  	ref.changePassword({
+		  email       : userEmail,
+		  oldPassword : userPassword,
+		  newPassword : $scope.password
+		}, function(error) {
+		  if (error === null) {
+		    console.log("Password changed successfully");
+		  } else {
+		    console.log("Error changing password:", error);
+		  }
+		});
+  };
+
+	$scope.logout = function() {
+		$state.go('login');
+
+	};
 
 })
-	// profile controller
-parkAppControllers.controller('MapCtrl', function($scope) {})
-	// map controller
-parkAppControllers.controller('DataCtrl', ['$scope', '$http',function($scope, $http) {
-	// data controller
-	$http.get("http:/data/users.json")
-	.success(function(response)
-	{
-		$scope.users = response;
-	});
-}]);
+
+		// Map Controller
+parkAppControllers.controller('MapCtrl', function($scope) {});
+	
+
+
 

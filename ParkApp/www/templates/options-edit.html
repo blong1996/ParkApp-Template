@@ -1,27 +1,29 @@
 <ion-view view-title="Edit Profile">
-
-  <ion-content ng-controller="OptionsEditCtrl">
+  <ion-content >
   <div id= "fontID">
-    <ion-list>
+    <div class="list list-inset">
 
       <label class="item item-input">
-      <input ng-model="FullName" type="text" placeholder="Full Name">
+      <span  class="input-label">Name</span>
+      <input ng-model="fullName" type="text">
       </label>
       <label class="item item-input">
-      <input ng-model="Username" type="text" placeholder="Username">
+      <span class="input-label">Username</span>
+      <input ng-model="username" type="text">
       </label>
       <label class="item item-input">
-      <input ng-model="email" type="email" placeholder="Email Address">
+      <span class="input-label">Email</span>
+      <input  ng-model="newEmail" type="text">
       </label>
       <label class="item item-input">
-      <input ng-model="PhoneNumber" type="tel" placeholder="Phone Number">
+      <span class="input-label">Number</span>
+      <input  ng-model="number" type="tel">
       </label>
     </ion-list>
   </div>
     <br>
     <div id= "fontID" style="width: 58%; float:right">
-      <button ng-click="save()" class="button button-assertive">
-
+      <button ng-click="profileEditSave()" class="button button-assertive">
       Save
       </button>
     </div>
