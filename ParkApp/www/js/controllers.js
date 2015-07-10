@@ -12,200 +12,37 @@ var parkAppControllers = angular.module('parkAppControllers', [ ])
 	
 		// Attractions Controller
 parkAppControllers.controller('AttractionsCtrl', function() {})
-	
 		
-		// Home Controller
-parkAppControllers.controller('HomeCtrl', function($scope, AppPhotos) {
-	$scope.photos = AppPhotos;
-	  // Returns all photos in app	
-})
-
-	
 
 		// Notifications Controller
 parkAppControllers.controller('NotificationsCtrl', function($scope) {})
 	
 		
 		// Camera Controller
-parkAppControllers.controller('CameraCtrl', function($scope, Camera) {
-	
-		var pictureSource;   // picture source
-		var destinationType; // sets the format of returned value
-		// Wait for device API libraries to load
-		//
-		document.addEventListener("deviceready",onDeviceReady,false);
-		// device APIs are available
-		//
-		function onDeviceReady() {
-				pictureSource=navigator.camera.PictureSourceType;
-				destinationType=navigator.camera.DestinationType;
-		}
-		// Called when a photo is successfully retrieved
-		//
-		 function onPhotoDataSuccess(imageData) {
-			// Uncomment to view the base64-encoded image data
-			// console.log(imageData);
-			// Get image handle
-			//
-			var smallImage = document.getElementById('smallImage');
-			// Unhide image elements
-			//
-			smallImage.style.display = 'block';
-			// Show the captured photo
-			// The inline CSS rules are used to resize the image
-			//
-			smallImage.src = "data:image/jpeg;base64," + imageData;
-		}
-		// Called when a photo is successfully retrieved
-		$scope.onPhotoURISuccess = function(imageURI) {
-			// Uncomment to view the image file URI
-			// console.log(imageURI);
-			// Get image handle
-			var largeImage = document.getElementById('largeImage');
-			// Unhide image elements
-			//
-			largeImage.style.display = 'block';
-			// Show the captured photo
-			// The inline CSS rules are used to resize the image
-			//
-			largeImage.src = imageURI;
-		}
-		// A button will call this function
-		//
-		$scope.capturePhoto = function() {
-			// Take picture using device camera and retrieve image as base64-encoded string
-			navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-				destinationType: destinationType.DATA_URL });
-		}
-		// A button will call this function
-		//
-		$scope.capturePhotoEdit = function() {
-			// Take picture using device camera, allow edit, and retrieve image as base64-encoded string
-			navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
-				destinationType: destinationType.DATA_URL });
-		}
-		// A button will call this function
-		//
-		$scope.getPhoto = function(source) {
-			// Retrieve image file location from specified source
-			navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
-				destinationType: destinationType.FILE_URI,
-				sourceType: source });
-		}
-		// Called if something bad happens.
-		//
-		$scope.onFail = function(message) {
-			alert('Failed because: ' + message);
-		}
-})
-parkAppControllers.controller("ExampleController", function($scope, $cordovaCamera, Camera) {
- var pictureSource;   // picture source
-    var destinationType; // sets the format of returned value
-
-    // Wait for device API libraries to load
-    //
-    document.addEventListener("deviceready",onDeviceReady,false);
-
-    // device APIs are available
-    //
-    function onDeviceReady() {
-        pictureSource=navigator.camera.PictureSourceType;
-        destinationType=navigator.camera.DestinationType;
-    }
-
-    // Called when a photo is successfully retrieved
-    //
-     function onPhotoDataSuccess(imageData) {
-      // Uncomment to view the base64-encoded image data
-      // console.log(imageData);
-
-      // Get image handle
-      //
-      var smallImage = document.getElementById('smallImage');
-
-      // Unhide image elements
-      //
-      smallImage.style.display = 'block';
-
-      // Show the captured photo
-      // The inline CSS rules are used to resize the image
-      //
-      smallImage.src = "data:image/jpeg;base64," + imageData;
-    }
-
-    // Called when a photo is successfully retrieved
-    //
-    $scope.onPhotoURISuccess = function(imageURI) {
-      // Uncomment to view the image file URI
-      // console.log(imageURI);
-
-      // Get image handle
-      //
-      var largeImage = document.getElementById('largeImage');
-
-      // Unhide image elements
-      //
-      largeImage.style.display = 'block';
-
-      // Show the captured photo
-      // The inline CSS rules are used to resize the image
-      //
-      largeImage.src = imageURI;
-    }
-
-    // A button will call this function
-    //
-    $scope.capturePhoto = function() {
-      // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-        destinationType: destinationType.DATA_URL });
-    }
-
-    // A button will call this function
-    //
-    $scope.capturePhotoEdit = function() {
-      // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
-      navigator.Camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
-        destinationType: destinationType.DATA_URL });
-    }
-
-    // A button will call this function
-    //
-    $scope.getPhoto = function(source) {
-      // Retrieve image file location from specified source
-      navigator.Camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
-        destinationType: destinationType.FILE_URI,
-        sourceType: source });
-    }
-
-    // Called if something bad happens.
-    //
-    $scope.onFail = function(message) {
-      alert('Failed because: ' + message);
-    }
-
-    $scope.takePicture = function() {
-        var options = { 
-            quality : 75, 
-            // destinationType : destinationType.DATA_URL, 
-           // sourceType : Camera.PictureSourceType.CAMERA, 
-            allowEdit : true,
-           // encodingType: Camera.EncodingType.JPEG,
-           
-           // popoverOptions: CameraPopoverOptions,
-            saveToPhotoAlbum: true
-
-        };
+parkAppControllers.controller('NewPostCtrl', function($scope, $state, $cordovaCamera) {
+	$scope.getPhoto = function() {
+  	
  
-        $cordovaCamera.getPicture(options).then(function(imageData) {
-            $scope.imgURI = "data:image/jpeg;base64," + imageData;
-        }, function(err) {
-            // An error occured. Show a message to the user
-        });
-    }
- 
-})
 
+    $cordovaCamera.getPicture({ 
+    	quality : 75, 
+      //destinationType : Camera.DestinationType.DATA_URL, 
+      //sourceType : Camera.PictureSourceType.CAMERA, 
+      allowEdit : true,
+      //encodingType: Camera.EncodingType.JPEG,
+      targetWidth: 375,
+      targetHeight: 350,
+      //popoverOptions: CameraPopoverOptions,
+      saveToPhotoAlbum: false
+    }).then(function(imageData) {
+      console.log(imageData);
+      $scope.imgURI = imageData;
+      alert(imageData)
+    }, function(err) {
+       alert("An error occurred: " + err)
+    });
+  }
+})
 		// Login Controller
 parkAppControllers.controller('LoginCtrl', ['$scope',  '$firebaseAuth', '$location', '$state', 'Auth', 
 	function ($scope, $firebaseAuth, $location, $state, Auth) {
@@ -272,14 +109,15 @@ parkAppControllers.controller('LoginCtrl', ['$scope',  '$firebaseAuth', '$locati
 }])
 
 		// Profile Controller
-parkAppControllers.controller('ProfileCtrl', function($scope, Auth) {
+parkAppControllers.controller('ProfileCtrl', function($scope, Auth, AppPhotos) {
 
 	var ref = new Firebase("http//nczooapp.firebaseio.com/");
 	var authData = ref.getAuth();
   var User = new Firebase("http//nczooapp.firebaseio.com/Users/"+authData.uid);
-  var userEmail
-  var userPassword
-
+  var userEmail;
+  var userPassword;
+  var userPhotos;
+  $scope.user = User;
 	User.child("Username").on("value", function(snapshot) {
 		$scope.username = snapshot.val();
 	});
@@ -291,6 +129,7 @@ parkAppControllers.controller('ProfileCtrl', function($scope, Auth) {
 	});
 	User.child("Pictures").on("value", function(snapshot) {
 		$scope.pictures = snapshot.val();
+		userPhotos = snapshot.val();
 	});
 	User.child("TotalLikes").on("value", function(snapshot) {
 		$scope.likes = snapshot.val();
@@ -340,7 +179,23 @@ parkAppControllers.controller('ProfileCtrl', function($scope, Auth) {
 
 	$scope.logout = function() {
 		$state.go('login');
+	};
 
+	$scope.appPhotos = AppPhotos;
+	  // Returns all photos in app
+	$scope.userLike = function(photoID) {
+		var p;
+		User.child("LikedPictures").on("value", function(snapshot) {
+			var pics = snapshot.val()
+
+			for(var x = 0; x < pics.length; x++) {
+				
+			}
+			pics.child(photoID).on("value", function(snap) {
+				p = snapshot.val();
+					return p.isLiked;
+			})
+		});
 	};
 
 })

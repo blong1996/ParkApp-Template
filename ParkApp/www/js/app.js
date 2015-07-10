@@ -134,7 +134,7 @@ parkApp.config(function($stateProvider, $urlRouterProvider) {
 			views: {
 				'tab-home': {
 					templateUrl: 'templates/tab-home.html', 
-					controller: 'HomeCtrl'
+					controller: 'ProfileCtrl'
 				}
 			}
 		}) 
@@ -165,20 +165,20 @@ parkApp.config(function($stateProvider, $urlRouterProvider) {
 				}
 			}
 		}) 
-		.state('tab.camera', {
-			url: '/camera',
+		.state('tab.newpost', {
+			url: '/newpost',
 			views: {
-				'tab-camera': {
-					templateUrl: 'templates/tab-camera.html',
-					controller: 'ExampleController'
+				'tab-newpost': {
+					templateUrl: 'templates/tab-newpost.html',
+					controller: 'NewPostCtrl'
 				}
 			}
 		})
 		
 		.state('tab.attractions-tag', {
-			url: '/camera/attractions-tag',
+			url: '/nepost/attractions-tag',
 			views: {
-				'tab-camera': {
+				'tab-newpost': {
 					templateUrl: 'templates/attractions-tag.html',
 					controller: 'AttractionsCtrl'
 				}

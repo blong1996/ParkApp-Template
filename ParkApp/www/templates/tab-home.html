@@ -1,6 +1,6 @@
 <ion-view title="NC Zoo"  >
   <ion-content >
-    <div id= "fontID" class="row" ng-repeat="photo in photos | orderBy: '-ID'"> 
+    <div id= "fontID" class="row" ng-repeat="photo in appPhotos | orderBy: '-ID'"> 
       <div class= "col col-100" >
         <div class="row">
           <div class="col col-50">
@@ -13,8 +13,8 @@
         <img class="avatar2" src="{{photo.PicSource}}">
         <div id= "fontID" class="row">
           <div class="col col-80">
-            <button class="button button-small button-light">  
-              <span class="icon ion-thumbsup"></span>   
+            <button ng-class="{'button button-small button-assertive': photo.isLiked, 'button button-small button-light': !photo.isLiked}">  
+              <span class="icon ion-thumbsup"></span>    
               <font size="1">{{photo.Likes.length}}</font>
             </button>
             <i>{{photo.Caption}}</i>
