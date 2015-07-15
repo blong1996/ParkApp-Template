@@ -31,6 +31,10 @@
     background: url("../img/zoo.png") no-repeat center center fixed ;
     background-size: cover;
 }
+.bc{
+    background: blue; no-repeat center center fixed ;
+    background-size: cover;
+}
 
 #fontID{
 font-family: Verdana;
