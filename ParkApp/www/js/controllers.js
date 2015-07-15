@@ -11,18 +11,22 @@ var parkAppControllers = angular.module('parkAppControllers', [ ])
 	//});
 	
 		// Attractions Controller
-parkAppControllers.controller('AttractionsCtrl', function() {})
-		
+parkAppControllers.controller('AttractionsCtrl', function() {})	
 
 		// Notifications Controller
 parkAppControllers.controller('NotificationsCtrl', function($scope) {})
-	
 		
 		// Camera Controller
 parkAppControllers.controller('NewPostCtrl', function($scope, $state, $cordovaCamera) {
-	$scope.getPhoto = function() {
-  	
- 
+	$scope.getPhoto = function(source) {
+    // Retrieve image file location from specified source
+    navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+      destinationType: destinationType.FILE_URI,
+      sourceType: source });
+  }
+
+
+	$scope.takePhoto = function() {
 
     $cordovaCamera.getPicture({ 
     	quality : 75, 
@@ -37,7 +41,7 @@ parkAppControllers.controller('NewPostCtrl', function($scope, $state, $cordovaCa
     }).then(function(imageData) {
       console.log(imageData);
       $scope.imgURI = imageData;
-      alert(imageData)
+     // alert(imageData)
     }, function(err) {
        alert("An error occurred: " + err)
     });
