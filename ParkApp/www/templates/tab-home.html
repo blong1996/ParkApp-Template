@@ -1,27 +1,27 @@
 <ion-view title="NC Zoo"  >
-  <ion-content class="bc">
-    <div id= "usernameFont" class="row" ng-repeat="photo in appPhotos | orderBy: '-ID'"> 
+  <ion-content>
+    <div id= "fontID" class="row" ng-repeat="photo in appPhotos | orderBy: '-ID'"> 
       <div class= "col col-100" >
         <div class="row">
           <div class="col col-50">
-             <i id= "usernameFont">{{photo.Username}}</i>
+             <i id= "fontID">{{photo.Username}}</i>
           </div>
           <div class="col col-50 text-right">
              <i>{{photo.Date}}</i>
           </div>
         </div>
         <img class="avatar2" src="{{photo.PicSource}}">
-        <div id= "usernameFont" class="row">
+        <div id= "fontID" class="row">
           <div class="col col-80">
             <button ng-class="{'button button-small button-clear': photo.isLiked, 'button button-small button-clear': !photo.isLiked}">  
-               <img src="/img/notclicked-white.png">   
+               <img src="/img/notclicked.png">   
               <font size="1" color="white">{{photo.Likes.length}}</font>
             </button>
             <i>{{photo.Caption}}</i>
           </div>
           <div class="col col-20 text-right"> 
             <button class="button button-small button-clear">
-               <img src="/img/comments-white.png">
+               <img src="/img/comments.png">
             </button>
           </div>
         </div>  

@@ -4,12 +4,12 @@
       <img src="/img/settings.png" align="middle">
     </a>
   </ion-nav-buttons>
-  <ion-content class="bc">
+  <ion-content>
   <div class="bar  custom-blue" style="height:26%;">
     <div style="width: 45%; float:left" >
       <img class="avatar" src="{{profilePic}}">
     </div>
-    <div id= "usernameFont" style="width: 55%; float:right">
+    <div id= "usernameFonts" style="width: 55%; float:right">
       <br><b>{{fullName}}</b></br>
       <br><b>Posts:</b> {{pictures.length}}</br>
       <br><b>Likes:</b> {{likes}}</br>
@@ -22,10 +22,10 @@
     <br>
     <br>
     <br>   
-    <div id= "usernameFont" class="row" ng-repeat="photo in pictures | orderBy: '-ID'">
-      <div id= "usernameFont" class= "col col-100" >
+    <div id= "fontID" class="row" ng-repeat="photo in pictures | orderBy: '-ID'">
+      <div id= "fontID" class= "col col-100" >
         <div class="row">
-          <div id= "usernameFont" class="col col-50">
+          <div id= "fontID" class="col col-50">
              <i>{{photo.Username}}</i>
           </div>
           <div class="col col-50 text-right">
