@@ -4,7 +4,7 @@
       <img src="/img/settings.png" align="middle">
     </a>
   </ion-nav-buttons>
-  <ion-content>
+  <ion-content class="bc">
   <div class="bar  custom-blue" style="height:26%;">
     <div style="width: 45%; float:left" >
       <img class="avatar" src="{{profilePic}}">
@@ -22,10 +22,10 @@
     <br>
     <br>
     <br>   
-    <div id= "fontID" class="row" ng-repeat="photo in pictures | orderBy: '-ID'">
-      <div id= "fontID" class= "col col-100" >
+    <div id= "usernameFont" class="row" ng-repeat="photo in pictures | orderBy: '-ID'">
+      <div id= "usernameFont" class= "col col-100" >
         <div class="row">
-          <div id= "fontID" class="col col-50">
+          <div id= "usernameFont" class="col col-50">
              <i>{{photo.Username}}</i>
           </div>
           <div class="col col-50 text-right">
@@ -36,14 +36,14 @@
         <div class="row">
           <div class="col col-80">
             <button ng-class="{'button button-small button-assertive': photo.isLiked, 'button button-small button-clear': !photo.isLiked}">  
-             <img src="/img/notclicked.png"> 
+             <img src="/img/notclicked-white.png"> 
               <font size="1" color="white">{{photo.Likes.length}}</font>
             </button>
             <i>{{photo.Caption}}</i>
           </div>
           <div class="col col-20 text-right"> 
             <button class="button button-small button-clear">
-              <img src="/img/comments.png">
+              <img src="/img/comments-white.png">
             </button>
           </div>
         </div>
