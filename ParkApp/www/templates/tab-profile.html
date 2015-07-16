@@ -1,6 +1,6 @@
 <ion-view view-title="{{username}}" >
   <ion-nav-buttons side="right">
-    <a class="button button-small; custom-blue"   ui-sref="tab.profile-options">
+    <a class="button button-small button-clear"   ui-sref="tab.profile-options">
       <img src="/img/settings.png" align="middle">
     </a>
   </ion-nav-buttons>
@@ -35,14 +35,14 @@
         <img class="avatar2" src="{{photo.PicSource}}">
         <div class="row">
           <div class="col col-80">
-            <button ng-class="{'button button-small button-assertive': photo.isLiked, 'button button-small button-light': !photo.isLiked}">  
+            <button ng-class="{'button button-small button-assertive': photo.isLiked, 'button button-small button-clear': !photo.isLiked}">  
              <img src="/img/notclicked.png"> 
-              <font size="1" style="fontID">{{photo.Likes.length}}</font>
+              <font size="1" color="white">{{photo.Likes.length}}</font>
             </button>
             <i>{{photo.Caption}}</i>
           </div>
           <div class="col col-20 text-right"> 
-            <button class="button button-small button-light">
+            <button class="button button-small button-clear">
               <img src="/img/comments.png">
             </button>
           </div>
