@@ -7,14 +7,46 @@ parkAppServices.factory("Auth", function($firebaseAuth) {
   return $firebaseAuth(userRef)
 })
 
-parkAppServices.factory("Users", function($firebaseArray) {
-  var users = new Firebase("http//nczooapp.firebaseio.com/Users");
-  return $firebaseArray(users)
+parkAppServices.factory("AppUsers", function($firebaseArray) {
+  var AppUsers = new Firebase("http//nczooapp.firebaseio.com/Users");
+  var users = $firebaseArray(AppUsers)
+  return {
+    all: function() {
+      return users;
+    },
+    delete: function() {
+      //Firebase delete info goes here
+    },
+    get: function(userID) {
+      for (var i = 0; i < users.length; i++) {
+        if (users[i].ID === (userID)) {
+          return users[i];
+        }
+      }
+      return null;
+    }
+  };
 })
 
 parkAppServices.factory("AppPhotos", function($firebaseArray) {
   var Photos = new Firebase("http//nczooapp.firebaseio.com/AppPictures");
-  return $firebaseArray(Photos)
+  var photos = $firebaseArray(Photos)
+  return {
+    all: function(){
+      return photos;
+    },
+    delete: function(photo) {
+      //Firebase delete info goes here
+    },
+    get: function(uid) {
+      for (var i = 0; i < photos.length; i++) {
+        if (photos[i].ID === parseInt(photoId)) {
+          return photos[i];
+        }
+      }
+      return null;
+    }
+  };  
 })
 
 
