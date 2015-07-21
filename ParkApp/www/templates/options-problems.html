@@ -1,22 +1,24 @@
 <ion-view view title="Report A Problem">
-  <ion-content class="bc">
-  <div id= "usernameFont">
-  <br>
-    <ion-list>
-      <label class="item item-input">
-      <input type="text" placeholder="First Name">
+  <ion-content class>
+   <div id= "fontID">
+    <div class="list list-inset">
+<div id= "fontID">
+    <div class="list list-inset">
+
+      <label class="item item-input custom-blue">
+      <span  class="input-label" id="usernameFont">Name</span>
+      <input ng-model="user.FullName" type="text">
+      </label>
+      <label class="item item-input custom-blue">
+      <span class="input-label" id="usernameFont">Username</span>
+      <input ng-model="user.Username" type="text">
       </label>
       <label class="item item-input">
-      <input type="text" placeholder="Last Name">
-      </label>
-      <label class="item item-input">
-      <input type="text" placeholder="Username">
-      </label>
-      <label class="item item-input">
-      <textarea placeholder="Comments"></textarea>
+      <textarea placeholder="Comments" id="usernameFont"></textarea>
       </label>
       <br>
-      <div style="width: 68%; float:right">
+      </div>
+      <div style="width: 70%; float:right">
         <button class="button custom-blue">
         Report Problem
         </button>
