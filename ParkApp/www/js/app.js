@@ -39,6 +39,7 @@ parkApp.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl: "templates/tabs.html"
 	})
 	// Each tab has its own nav history stack:
+
 		.state('tab.profile-options', {
 			url: '/profile/options',
 			views: {
@@ -129,6 +130,15 @@ parkApp.config(function($stateProvider, $urlRouterProvider) {
 				}
 			}
 		})
+		.state('tab.comments', {
+			url: '/templates/comments',
+			views: {
+				'tab-home': {
+					templateUrl: 'templates/tab-comments.html', 
+					controller: 'ProfileCtrl'
+				}
+			}
+		}) 
 		.state('tab.home', {
 			url: '/home',
 			views: {
@@ -138,6 +148,8 @@ parkApp.config(function($stateProvider, $urlRouterProvider) {
 				}
 			}
 		}) 
+
+		
 		.state('tab.notifications', {
 			url: '/notifications',
 			views: {
@@ -183,7 +195,7 @@ parkApp.config(function($stateProvider, $urlRouterProvider) {
 					controller: 'AttractionsCtrl'
 				}
 			}
-		});
+		})
 
 	// if none of the above states are matched, use this as the fallback
 	$urlRouterProvider.otherwise('/login');
