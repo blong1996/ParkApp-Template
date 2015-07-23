@@ -112,22 +112,6 @@ parkAppControllers.controller('LoginCtrl', ['$scope',  '$firebaseAuth', '$locati
   		// registers new Firebase user
 }])
 
-parkAppControllers.controller('HomeCtrl', ['$scope', '$stateParams', 'AppPhotos',
-	function($scope, $stateParams, AppPhotos) {
-
-	$scope.appPhotos = AppPhotos.all();
-	  // Returns all photos in app
-	$scope.likePhoto = function(likedPhotos) {
-		for (var x = 0; x < likedPhotos.length; x++) {
-			for (var y = 0; y < appPhotos.length; x++) {
-				if (appPhotos[y] == likedPhotos[x]) {
-
-				}
-			} 
-		}
-	}
-
-	}])
 
 		// Profile Controller
 parkAppControllers.controller('ProfileCtrl', function($scope, $stateParams, Auth, AppPhotos, AppUsers) {
@@ -136,18 +120,10 @@ parkAppControllers.controller('ProfileCtrl', function($scope, $stateParams, Auth
 	var authData = ref.getAuth();
   var userEmail;
   var userPassword;
-  //var users = AppUsers.all()
- // $scope.user = AppUsers.get(authData.uid)
-
-  /*for (var x = 0; x < users.length; x++) {
-  	if (users[x].ID == authData.uid) {
-  		$scope.user = users[x];
-  		break;
-  	}
-  }*/
-  
   var User = new Firebase("http//nczooapp.firebaseio.com/Users/"+authData.uid);
   var userPhotos;
+  var lPhotos;
+ 
   $scope.user = User;
 	User.child("Username").on("value", function(snapshot) {
 		$scope.username = snapshot.val();
@@ -167,6 +143,54 @@ parkAppControllers.controller('ProfileCtrl', function($scope, $stateParams, Auth
 	});
   User.child("LikedPictures").on("value", function(snapshot) {
   	$scope.likedPics = snapshot.val();
+  	lPhotos = snapshot.val()
+  	//var lPhotosRef = User.child("LikedPictures");
+
+  	$scope.isLiked = function(photoID) {
+			for (var x = 0; x < lPhotos.length; x++) {
+				if (photoID == lPhotos[x].ID) {						
+						return true;
+						  // displays 'liked' button
+						break;
+				}
+			}
+			return false; 
+				// displays 'unliked' button
+		}
+
+		$scope.likePic = function(photo) {
+			for (var x = 0; x < lPhotos.length; x++) {
+				if (photo.ID == lPhotos[x].ID) {	
+					/*var photoUserID = lPhotos[x].uid
+					var photoUser = new Firebase("http//nczooapp.firebaseio.com/Users/"+photoUserID);
+					photoUser.child("TotalLikes").on("value", function(snapshot) {
+						photoUser.set({
+							TotalLikes: snapshot.val() - 1
+								// decreases the user of photo's total likes by one
+						})
+					})
+					var pUsersPhotosRef = photoUser.child("Pictures")
+					photoUser.child("Pictures").on("value", function(snapshot) {
+						var pUsersPhotos = snapshot.val();
+						for(int y = 0; y < pUsersPhotos.length; y++) {
+							if (photo.ID == pUsersPhotos[y].ID) {
+								pUsersPhotosRef.child()
+								break;
+							}
+						}
+					})*/
+					//var likes = photo.child("Likes")
+
+					var photoRef = new Firebase("http//nczooapp.firebaseio.com/Users/"+authData.uid+"/LikedPictures/"+lPhotos[x]);
+						photoRef.remove();
+						// removes photo from users liked photos
+
+					break;
+				}
+			}
+
+		}
+
   });
   User.child("PhoneNumber").on("value", function(snapshot) {
   	$scope.number = snapshot.val();
@@ -182,20 +206,7 @@ parkAppControllers.controller('ProfileCtrl', function($scope, $stateParams, Auth
 
 	$scope.appPhotos = AppPhotos.all();
 	  // Returns all photos in app
-	$scope.isLiked = function(photoID, likedPictures) {
-		for (var x = 0; x < likedPics.length; x++) {
-				if (photoID == likedPhotos[x].ID) {
-						break;
-						return true;
-				}
-			}
-			return false; 
-		}
 	
-	$scope.likePhoto = function(ID) {
-		for (var x = 0; x < likedPhotos.length; x++) {
-		}
-	}
 
 
   $scope.profileEditSave = function() {

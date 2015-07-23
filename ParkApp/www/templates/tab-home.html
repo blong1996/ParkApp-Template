@@ -13,8 +13,9 @@
         <img class="avatar2" src="{{photo.PicSource}}">
         <div id= "fontID" class="row">
           <div class="col col-80">
-            <button class="button button-small button-clear">  
-               <img src="/img/notclicked.png">   
+            <button class="button button-small button-clear" ng-click="likePic({{photo}})">  
+            <img ng-show="isLiked({{photo.ID}})" src="/img/clicked.png">
+              <img ng-show="!isLiked({{photo.ID}})" src="/img/notclicked.png">   
               <font size="1" id= "fontID">{{photo.Likes.length}}</font>
             </button>
             <i>{{photo.Caption}}</i>
