@@ -114,16 +114,15 @@ parkAppControllers.controller('LoginCtrl', ['$scope',  '$firebaseAuth', '$locati
 
 
 		// Profile Controller
-parkAppControllers.controller('ProfileCtrl', function($scope, $stateParams, Auth, AppPhotos, AppUsers) {
+parkAppControllers.controller('ProfileCtrl', function($scope, $state, $stateParams, Auth, AppPhotos, AppUsers) {
 
 	var ref = new Firebase("http//nczooapp.firebaseio.com/");
 	var authData = ref.getAuth();
   var userEmail;
   var userPassword;
   var User = new Firebase("http//nczooapp.firebaseio.com/Users/"+authData.uid);
-  var userPhotos;
-  var lPhotos;
- 
+	$scope.appPhotos = AppPhotos.all();
+	  // Returns all photos in app
   $scope.user = User;
 	User.child("Username").on("value", function(snapshot) {
 		$scope.username = snapshot.val();
@@ -134,64 +133,88 @@ parkAppControllers.controller('ProfileCtrl', function($scope, $stateParams, Auth
 	User.child("ProfilePic").on("value", function(snapshot) {
 		$scope.profilePic = snapshot.val();
 	});
-	User.child("Pictures").on("value", function(snapshot) {
-		$scope.pictures = snapshot.val();
-		userPhotos = snapshot.val();
-	});
-	User.child("TotalLikes").on("value", function(snapshot) {
-		$scope.likes = snapshot.val();
-	});
-  User.child("LikedPictures").on("value", function(snapshot) {
-  	$scope.likedPics = snapshot.val();
-  	lPhotos = snapshot.val()
-  	//var lPhotosRef = User.child("LikedPictures");
 
-  	$scope.isLiked = function(photoID) {
-			for (var x = 0; x < lPhotos.length; x++) {
-				if (photoID == lPhotos[x].ID) {						
-						return true;
-						  // displays 'liked' button
-						break;
+	$scope.totalLikes = function() {
+		var photos = AppPhotos.all();
+		var likes = 0;
+		for (var x = 0; x < photos.length; x++) {
+			if (photos[x].uid = authData.uid) {
+				if(photos[x].Likes != null) {
+					for (var y = 0; y < photos[x].Likes.length; y++) {
+						if (photos[x].Likes[y].uid != authData.uid) {
+							likes++;
+						}
+					}
 				}
 			}
-			return false; 
-				// displays 'unliked' button
 		}
+		return likes;
+	}
 
-		$scope.likePic = function(photo) {
-			for (var x = 0; x < lPhotos.length; x++) {
-				if (photo.ID == lPhotos[x].ID) {	
-					/*var photoUserID = lPhotos[x].uid
-					var photoUser = new Firebase("http//nczooapp.firebaseio.com/Users/"+photoUserID);
-					photoUser.child("TotalLikes").on("value", function(snapshot) {
-						photoUser.set({
-							TotalLikes: snapshot.val() - 1
-								// decreases the user of photo's total likes by one
-						})
-					})
-					var pUsersPhotosRef = photoUser.child("Pictures")
-					photoUser.child("Pictures").on("value", function(snapshot) {
-						var pUsersPhotos = snapshot.val();
-						for(int y = 0; y < pUsersPhotos.length; y++) {
-							if (photo.ID == pUsersPhotos[y].ID) {
-								pUsersPhotosRef.child()
-								break;
-							}
-						}
-					})*/
-					//var likes = photo.child("Likes")
 
-					var photoRef = new Firebase("http//nczooapp.firebaseio.com/Users/"+authData.uid+"/LikedPictures/"+lPhotos[x]);
-						photoRef.remove();
-						// removes photo from users liked photos
-
+	$scope.isLiked = function(photo) {
+		if(photo.Likes != null) {
+			for(var x = 0; x < photo.Likes.length; x++) {
+				if (photo.Likes[x].uid == authData.uid) {
+					return true;
 					break;
 				}
 			}
-
+			return false;
 		}
+			return false;
+	}
 
-  });
+
+	$scope.likePic = function(photo) {
+		var photoID = photo.ID;
+		var photoRef = new Firebase("http//nczooapp.firebaseio.com/AppPictures/"+photoID);
+		var isLiked = false;
+		if(photo.Likes != null) {
+			// if the photo has likes
+			for(var x = 0; x < photo.Likes.length; x++) {
+				if (photo.Likes[x].uid == authData.uid) {
+					// photo is liked by current user 
+					isLiked = true;
+					var photoUser = photo.uid
+					var likeID = photo.Likes[x].ID;
+					var likeRef = new Firebase("http//nczooapp.firebaseio.com/AppPictures/"+photoID+"/Likes/"+likeID);
+					var photoUserRef = new Firebase("http//nczooapp.firebaseio.com/Users/"+photoUser);
+					likeRef.remove();
+						//removes like
+					break;
+				}
+			}
+			if (!isLiked) {
+				//the photo has likes but is unliked by current user 
+				var numLikes = photo.Likes.length
+				var newID = photo.Likes[numLikes-1].ID + 1
+				var photoLikesRef = photoRef.child("Likes");
+				var newIDRef = photoLikesRef.child(newID);
+				newIDRef.set({
+						Date: "July 23, 2015",
+						ID: newID,
+						Username: "zach_attack",
+						uid: authData.uid
+				});
+					//adds like
+			}
+		} else {
+			 // else (the photo has no likes)
+			 var photoLikesRef = photoRef.child("Likes");
+				photoLikesRef.set({
+			 		0: {
+			 			Date: "July 23, 2015",
+			 			ID: 0,
+			 			Username: "zach_attack",
+						uid: authData.uid
+			 		}
+			 });
+				//adds like
+		}
+		//$state.go($state.current, {}, {reload: true});
+	}
+
   User.child("PhoneNumber").on("value", function(snapshot) {
   	$scope.number = snapshot.val();
   });	
@@ -204,8 +227,7 @@ parkAppControllers.controller('ProfileCtrl', function($scope, $stateParams, Auth
   }); 
 
 
-	$scope.appPhotos = AppPhotos.all();
-	  // Returns all photos in app
+	
 	
 
 

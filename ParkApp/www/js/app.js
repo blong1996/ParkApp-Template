@@ -20,8 +20,8 @@ parkApp.constant('FIREBASE_URI', 'http//nczooapp.firebaseio.com/');
 
 
 
-parkApp.config(function($stateProvider, $urlRouterProvider) {
-
+parkApp.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+	$ionicConfigProvider.views.maxCache(0);
 	// Ionic uses AngularUI Router which uses the concept of states
 	// Learn more here: https://github.com/angular-ui/ui-router
 	// Set up the various states which the app can be in.
@@ -130,7 +130,7 @@ parkApp.config(function($stateProvider, $urlRouterProvider) {
 				}
 			}
 		})
-		.state('tab.comments', {
+		.state('tab.home-comments', {
 			url: '/templates/comments',
 			views: {
 				'tab-home': {
@@ -140,6 +140,7 @@ parkApp.config(function($stateProvider, $urlRouterProvider) {
 			}
 		}) 
 		.state('tab.home', {
+			cache: false,
 			url: '/home',
 			views: {
 				'tab-home': {

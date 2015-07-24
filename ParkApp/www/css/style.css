@@ -57,3 +57,11 @@ color: white;
     color : white !important;
     background-color:#02ACCF !important;
  }   
+
+.liked-icon{
+    background: url("../img/clicked.png") no-repeat;
+}
+
+.unliked-icon{
+    background: url("../img/notclicked.png") no-repeat;
+}
