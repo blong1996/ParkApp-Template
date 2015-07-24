@@ -130,11 +130,15 @@ parkApp.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider
 				}
 			}
 		})
-		.state('tab.home-comments', {
+		.state('comments', {
 			url: '/templates/comments',
 			views: {
 				'tab-home': {
-					templateUrl: 'templates/tab-comments.html', 
+					templateUrl: 'templates/comments.html', 
+					controller: 'ProfileCtrl'
+				},
+				'tab-profile': {
+					templateUrl: 'templates/comments.html', 
 					controller: 'ProfileCtrl'
 				}
 			}
