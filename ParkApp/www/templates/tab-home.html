@@ -12,20 +12,28 @@
         </div>
         <img class="avatar2" src="{{photo.PicSource}}">
         <div id= "fontID" class="row">
-          <div class="col col-80">
+          <div class="col col-100">
             <button class="button button-small button-clear" ng-click="likePic({{photo}})">  
             <img ng-show="isLiked({{photo}})" src="/img/clicked.png">
               <img ng-show="!isLiked({{photo}})" src="/img/notclicked.png">   
-              <font size="1" id= "fontID">{{photo.Likes.length}}</font>
             </button>
-            <i>{{photo.Caption}}</i>
           </div>
-          <div class="col col-20 text-right"> 
+          <div class="col col-80"> 
             <button class="button button-small button-clear" ui-sref="comments">
                <img src="/img/comments.png">
             </button>
-          </div>
+          </div> 
+           <div class="col col-10"> 
+            <button class="button-clear">
+            REPORT
+            </button>
+          </div> 
         </div>  
+         <center><i>{{photo.Caption}}</i></center>
+
+         <!-- <div>
+            <font size="1" id= "fontID">{{photo.Likes.length}}</font>
+         </div> -->
       </div>
     </div>
   </ion-content>
