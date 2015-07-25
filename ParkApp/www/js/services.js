@@ -38,9 +38,20 @@ parkAppServices.factory("AppPhotos", function($firebaseArray) {
     delete: function(photo) {
       //Firebase delete info goes here
     },
-    get: function(uid) {
+    getUserPhotos: function(username) {
+      var userPhotos = [];
       for (var i = 0; i < photos.length; i++) {
-        if (photos[i].ID === parseInt(photoId)) {
+        if(photos[i].Username == username) {
+          userPhotos[userPhotos.length] = photos[i];
+          
+        }
+        
+      }
+      return userPhotos;
+    },
+    get: function(photoID) {
+      for (var i = 0; i < photos.length; i++) {
+        if (photos[i].ID === parseInt(photoID)) {
           return photos[i];
         }
       }

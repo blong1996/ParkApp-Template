@@ -130,21 +130,7 @@ parkApp.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider
 				}
 			}
 		})
-		.state('comments', {
-			url: '/templates/comments',
-			views: {
-				'tab-home': {
-					templateUrl: 'templates/comments.html', 
-					controller: 'ProfileCtrl'
-				},
-				'tab-profile': {
-					templateUrl: 'templates/comments.html', 
-					controller: 'ProfileCtrl'
-				}
-			}
-		}) 
 		.state('tab.home', {
-			cache: false,
 			url: '/home',
 			views: {
 				'tab-home': {
@@ -152,7 +138,17 @@ parkApp.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider
 					controller: 'ProfileCtrl'
 				}
 			}
+		})
+		.state('tab.home-comments', {
+			url: '/home/:photoID',
+			views: {
+				'tab-home': {
+					templateUrl: 'templates/tab-comments.html', 
+					controller: 'ProfileCtrl'
+				}
+			}
 		}) 
+		 
 
 		
 		.state('tab.notifications', {

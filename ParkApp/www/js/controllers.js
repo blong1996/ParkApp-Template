@@ -123,9 +123,12 @@ parkAppControllers.controller('ProfileCtrl', function($scope, $state, $statePara
   var User = new Firebase("http//nczooapp.firebaseio.com/Users/"+authData.uid);
 	$scope.appPhotos = AppPhotos.all();
 	  // Returns all photos in app
+	
   $scope.user = User;
 	User.child("Username").on("value", function(snapshot) {
 		$scope.username = snapshot.val();
+		$scope.userPhotos = AppPhotos.getUserPhotos(snapshot.val());
+
 	});
 	User.child("FullName").on("value", function(snapshot) {
 		$scope.fullName = snapshot.val();
@@ -151,6 +154,7 @@ parkAppControllers.controller('ProfileCtrl', function($scope, $state, $statePara
 		return likes;
 	}
 
+	$scope.photo = AppPhotos.get($stateParams.photoID);
 
 	$scope.isLiked = function(photo) {
 		if(photo.Likes != null) {
@@ -170,6 +174,7 @@ parkAppControllers.controller('ProfileCtrl', function($scope, $state, $statePara
 		var photoID = photo.ID;
 		var photoRef = new Firebase("http//nczooapp.firebaseio.com/AppPictures/"+photoID);
 		var isLiked = false;
+		$scope.buttonSource = "/img/notclicked.png";
 		if(photo.Likes != null) {
 			// if the photo has likes
 			for(var x = 0; x < photo.Likes.length; x++) {
@@ -225,10 +230,6 @@ parkAppControllers.controller('ProfileCtrl', function($scope, $state, $statePara
   User.child("Password").on("value", function(snapshot) {
   	userPassword = snapshot.val();
   }); 
-
-
-	
-	
 
 
   $scope.profileEditSave = function() {
