@@ -134,7 +134,16 @@ parkApp.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider
 			url: '/home',
 			views: {
 				'tab-home': {
-					templateUrl: 'templates/tab-home.html', 
+					templateUrl: 'templates/tab-home.html',
+					controller: 'ProfileCtrl'
+				}
+			}
+		})
+		.state('home.home-animals', {
+			url: '/home/home-animals',
+			views: {
+				'home-animals': {
+					templateUrl: 'templates/home-animals.html',
 					controller: 'ProfileCtrl'
 				}
 			}
@@ -143,41 +152,41 @@ parkApp.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider
 			url: '/home/:photoID',
 			views: {
 				'tab-home': {
-					templateUrl: 'templates/tab-comments.html', 
+					templateUrl: 'templates/tab-comments.html',
 					controller: 'ProfileCtrl'
 				}
 			}
-		}) 
-		 
+		})
 
-		
+
+
 		.state('tab.notifications', {
 			url: '/notifications',
 			views: {
 				'tab-notifications': {
-					templateUrl: 'templates/tab-notifications.html', 
+					templateUrl: 'templates/tab-notifications.html',
 					controller: 'NotificationsCtrl'
 				}
 			}
-		}) 
+		})
 		.state('tab.profile', {
 			url: '/profile',
 			views: {
 				'tab-profile': {
-					templateUrl: 'templates/tab-profile.html', 
+					templateUrl: 'templates/tab-profile.html',
 					controller: 'ProfileCtrl'
 				}
 			}
-		}) 
+		})
 		.state('tab.map', {
 			url: '/map',
 			views: {
 				'tab-map': {
-					templateUrl: 'templates/tab-map.html', 
+					templateUrl: 'templates/tab-map.html',
 					controller: 'MapCtrl'
 				}
 			}
-		}) 
+		})
 		.state('tab.newpost', {
 			url: '/newpost',
 			views: {
@@ -187,7 +196,7 @@ parkApp.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider
 				}
 			}
 		})
-		
+
 		.state('tab.attractions-tag', {
 			url: '/nepost/attractions-tag',
 			views: {
@@ -202,6 +211,3 @@ parkApp.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider
 	$urlRouterProvider.otherwise('/login');
 
 });
-
-
-

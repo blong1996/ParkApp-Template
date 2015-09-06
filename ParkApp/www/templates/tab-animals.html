@@ -1,9 +1,4 @@
-<ion-view title="NC Zoo"  >
-  <ion-nav-buttons side="left">
-    <a class="button button-small button-clear"   ui-sref="home.home-animals">
-      <img src="/img/settings.png" align="middle">
-    </a>
-  </ion-nav-buttons>
+<ion-view title="animals"  >
   <ion-content>
     <div id= "fontID" class="row" ng-repeat="photo in appPhotos | orderBy: '-ID'">
       <div class= "col col-100" >
@@ -35,9 +30,6 @@
           <span>{{photo.Caption}}</span>
           </div>
         </div>
-         <!-- <div>
-            <font size="1" id= "fontID">{{photo.Likes.length}}</font>
-         </div> -->
       </div>
     </div>
   </ion-content>
