@@ -1,6 +1,6 @@
 <ion-view title="NC Zoo"  >
   <ion-nav-buttons side="left">
-    <a class="button button-small button-clear"   ui-sref="home.home-animals">
+    <a class="button button-small button-clear"   ui-sref="tab.home-animals">
       <img src="/img/settings.png" align="middle">
     </a>
   </ion-nav-buttons>
@@ -22,7 +22,7 @@
             <img ng-show="isLiked({{photo}})" src="/img/clicked.png">
               <img ng-show="!isLiked({{photo}})" src="/img/notclicked.png">
             </button>
-             <button class="button button-small button-clear" ng-click="selectedPic({{photo}})" ui-sref="tab.home-comments">
+             <button class="button button-small button-clear" ng-click="clickedPhoto({{photo}})" ui-sref="tab.home-comments">
                <img src="/img/comments.png">
             </button>
           </div>

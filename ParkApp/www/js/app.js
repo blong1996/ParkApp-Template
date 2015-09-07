@@ -139,10 +139,10 @@ parkApp.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider
 				}
 			}
 		})
-		.state('home.home-animals', {
+		.state('tab.home-animals', {
 			url: '/home/home-animals',
 			views: {
-				'home-animals': {
+				'tab-home': {
 					templateUrl: 'templates/home-animals.html',
 					controller: 'ProfileCtrl'
 				}

@@ -17,14 +17,35 @@ parkAppControllers.controller('AttractionsCtrl', function() {})
 parkAppControllers.controller('NotificationsCtrl', function($scope) {})
 		
 		// Camera Controller
-parkAppControllers.controller('NewPostCtrl', function($scope, $state, $cordovaCamera) {
+parkAppControllers.controller('NewPostCtrl', function($scope, $state, $cordovaCamera, Auth, AppPhotos) {
+	var ref = new Firebase("http//nczooapp.firebaseio.com/");
+	var authData = ref.getAuth();
+	$scope.appPhotos = AppPhotos.all();
+	  // Returns all photos in app
+  $scope.caption
 	$scope.getPhoto = function(source) {
     // Retrieve image file location from specified source
     navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
       destinationType: destinationType.FILE_URI,
       sourceType: source });
   }
+  $scope.postPic = function(photoURI, caption) {
+  	var numPhotos = appPhotos.length
+		var newID = appPhotos[numPhotos-1].ID + 1
+		var photosRef = new Firebase("http//nczooapp.firebaseio.com/AppPictures"); 
+		var newIDRef = photosRef.child(newID);
+		newIDRef.set({
+			Caption: caption,
+			Date: "July 29, 2015",
+			ID: newID,
+			PicSourse: photoURI,
+			Username: "zach_attack",
+			uid: authData.uid
+		});
+			//adds photo
 
+  	$state.go('tab.home');
+  }
 
 	$scope.takePhoto = function() {
 
@@ -154,7 +175,9 @@ parkAppControllers.controller('ProfileCtrl', function($scope, $state, $statePara
 		return likes;
 	}
 
-	$scope.photo = AppPhotos.get($stateParams.photoID);
+	$scope.clickedPhoto = function(photo) {
+		$scope.photo = photo;
+	}
 
 	$scope.isLiked = function(photo) {
 		if(photo.Likes != null) {
