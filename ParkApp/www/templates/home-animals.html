@@ -1,36 +1,29 @@
 <ion-view title="Animals"  >
   <ion-content>
-    <div id= "fontID" class="row" ng-repeat="photo in appPhotos | orderBy: '-ID'">
       <div class= "col col-100" >
         <div class="row">
-          <div class="col col-50">
-             <i id= "fontID">{{photo.Username}}</i>
-          </div>
-          <div class="col col-50 text-right">
-             <i>{{photo.Date}}</i>
-          </div>
         </div>
-        <img class="avatar2" src="{{photo.PicSource}}">
-        <div id= "fontID" class="row">
-          <div class="col col-30">
-            <button class="button button-small button-clear" ng-click="likePic({{photo}})">
-            <img ng-show="isLiked({{photo}})" src="/img/clicked.png">
-              <img ng-show="!isLiked({{photo}})" src="/img/notclicked.png">
-            </button>
-             <button class="button button-small button-clear" ng-click="selectedPic({{photo}})" ui-sref="tab.home-comments">
-               <img src="/img/comments.png">
-            </button>
-          </div>
-          <div class="col col-20 text-right">
-            <button class="button-clear">REPORT</button>
-          </div>
+        <img class="avatar2" src="/img/AfricanLion.png">
+        <div id= "fontID">
+        <center>  The roar of a male lion can be heard five miles away, and their mane is
+          not only for demonstration, but protection in fights with other males and sometimes hyenas.
+          Although males are called King of the Beasts, in a lion pride it is the females doing the hunting
+          for the entire group.</center>
         </div>
-        <div class="row">
-          <div>
-          <span>{{photo.Caption}}</span>
-          </div>
+        <br>
+        <img class="avatar2" src="/img/Chimpanzee.png">
+        <div id= "fontID">
+        <center> Chimpanzees are intelligent and very social animals.
+          They live in large troops that may number 50 individuals or more.
+          Troops are led by a dominant, or alpha, male and female, and the
+          hierarchy is maintained through posture, facial expressions, sounds,
+          gestures and fights. Tool use is well documented in chimpanzees, with
+          chimps creating tools to help them find food (using a small twig to fish
+          out termites or smashing nuts that are too hard to crack between two rocks),
+          obtain and transport water by chewing leaves and then soaking up water with them,
+          and even using rocks and limbs to threaten other animals.</center>
         </div>
       </div>
-    </div>
+
   </ion-content>
 </ion-view>
