@@ -148,6 +148,15 @@ parkApp.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider
 				}
 			}
 		})
+		.state('tab.lion-animals', {
+			url: '/home/home-animals/lion-animals',
+			views: {
+				'tab-home': {
+					templateUrl: 'templates/lion-animals.html',
+					controller: 'ProfileCtrl'
+				}
+			}
+		})
 		.state('tab.home-comments', {
 			url: '/home/:photoID',
 			views: {
