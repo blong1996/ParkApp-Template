@@ -28,7 +28,7 @@
     height: 600px;
 }
 .login{
-    background: url("../img/zoo.png") no-repeat center center fixed ;
+    background: url("../img/parrot.png") no-repeat center center fixed ;
     background-size: cover;
 }
 .bc{
@@ -48,7 +48,7 @@ color: white;
 .scroll {
     height: 100%;
 }
- 
+
 #map {
     width: 100%;
     height: 100%;
@@ -56,7 +56,7 @@ color: white;
 .custom-blue{
     color : white !important;
     background-color:#02ACCF !important;
- }   
+ }
 
 .liked-icon{
     background: url("../img/clicked.png") no-repeat;
