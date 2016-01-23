@@ -1,0 +1,25 @@
+var users = [{
+	"ID" : 1,
+	"FullName" : "Zachary Cafarelli",
+	"Email" : "zcafarelli@gmail.com",
+	"Username" : "zach_attk_iii",
+	"Password" : "12345678",
+	"ProfilePic" : "../img/zach.png",
+	"Photos" : [{
+		"ID" : 1,
+		"Pic" : "https://en.wikipedia.org/?title=Elephant#/media/File:African_Bush_Elephant.jpg",
+		"Caption" : "Huge Elephant!",
+		"Date" : "10:15:23:05:14:2015" ,
+		"Likes" : [{
+			"ID" : 1,
+			"Username" : "bllong1996",
+			"Date" : "",
+			}],
+		"Comments" : [{
+			"ID" : 1,
+			"Username" : "bllong1996",
+			"Comment" : "Nice pic!",
+			"Date" : "" 
+		}]
+	}]
+}]

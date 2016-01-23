@@ -1,0 +1,57 @@
+<ion-view  padding ="true" view-title="New Post" >
+  <ion-content class>
+    <div >
+      <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}">
+      <img ng-show="imgURI === undefined" ng-src="http://placehold.it/375x350">
+    </div>
+    <div id= "fontID" style="width: 65%; float:right">
+      <!-- <button class="button" ng-click="getPhoto()"> -->
+    <br>
+      <button class="button custom-blue" ng-click="takePhoto()">
+      Take Photo
+      </button> 
+     <!-- <br>
+      <br>
+       <button class="button button-assertive"ng-click="getPhoto(pictureSource.PHOTOLIBRARY);">Photo Album</button>-->
+    </div>
+ 
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <ul class="list list-inset">
+    <label class="item item-input">
+        <textarea ng-model="caption"placeholder="Caption"></textarea>
+    </label>
+    <div id= "fontID" style="width: 100%; float:right">
+      <a class="item item-icon-right custom-blue" href="#" ui-sref="tab.attractions-tag">
+          Tag Attraction
+          <i class="icon ion-chevron-right"></i>
+        </a>
+      <li class="item item-toggle custom-blue">
+      Add to Map
+      <label class="toggle toggle-stable" >
+        <input type="checkbox">
+        <div class="track">
+          <div class="handle"></div>
+        </div>
+      </label>
+      </li>
+      <br>
+    </div>
+    <br>
+    <div id= "fontID" class="col col-33 col-offset-33">
+      <button class="button custom-blue" ng-click="postPic(imgURI,caption)">
+      Post</button> 
+    </div>
+    <!--<button ng-click="takePicture();">Capture Photo</button> <br>
+      <button ng-click="capturePhotoEdit();">Capture Editable Photo</button> <br>
+      <button ng-click="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
+      <button ng-click="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
+      <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}">
+      <img ng-show="imgURI === undefined" ng-src="http://placehold.it/300x300">
+      <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+      <img style="display:none;" id="largeImage" src="" />-->
+  </ion-content>
+</ion view>

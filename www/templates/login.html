@@ -1,0 +1,44 @@
+<ion-content class="login">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <div id= "fontID" class="list" ng-controller="LoginCtrl">
+    <label class="item item-input">
+    <input ng-model="email" type="text" placeholder="Username">
+
+    </label>
+    <label class="item item-input">
+    <input ng-model="password" type="password" placeholder="Password">
+    </label>
+    <button class="button button-block custom-blue"ng-click="login()">Login</button>
+    <button class="button button-block custom-blue"ng-click="register()">Register</button>
+
+    <!--<div ng-hide="authData" class="card" ng-click="login()">
+      <button class="item">
+      Log In with Facebook
+      </button>
+    </div>
+
+    <div class="card" ng-show="authData">
+      <div class="item item-text-wrap">
+        Hello {{authData.facebook.displayName}}!
+      </div>
+    </div> -->
+
+
+   <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button> 
+
+<div id="status">
+</div>-->
+  </div>
+</ion-content>

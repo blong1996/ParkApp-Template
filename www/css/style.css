@@ -1,0 +1,67 @@
+/* Empty. Add your own CSS if you like */
+.avatar {
+    width:100px;
+    margin: 5px;
+    border:5px none;
+    border-radius: 250px;
+    -webkit-border-radius: 250px;
+    -moz-border-radius: 250px;
+}
+.avatar1 {
+	 width:50px;
+    margin: 5px;
+    border:7px none;
+    border-radius: 30px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+}
+.avatar2{
+     width:100%;
+
+}
+.avatar3{
+    width:100px;
+}
+
+.map{
+    width: 1000px;
+    height: 600px;
+}
+.login{
+    background: url("../img/parrot.png") no-repeat center center fixed ;
+    background-size: cover;
+}
+.bc{
+    background: rgb(0, 122, 195); no-repeat center center fixed ;
+    background-size: cover;
+}
+
+#fontID{
+font-family: Verdana;
+color:#02ACCF;
+}
+#usernameFont{
+font-family: Verdana;
+color: white;
+}
+
+.scroll {
+    height: 100%;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+.custom-blue{
+    color : white !important;
+    background-color:#02ACCF !important;
+ }
+
+.liked-icon{
+    background: url("../img/clicked.png") no-repeat;
+}
+
+.unliked-icon{
+    background: url("../img/notclicked.png") no-repeat;
+}

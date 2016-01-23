@@ -1,0 +1,59 @@
+<ion-view view-title="{{username}}" >
+  <ion-nav-buttons side="right">
+    <a class="button button-small button-clear"   ui-sref="tab.profile-options">
+      <img src="/img/settings.png" align="middle">
+    </a>
+  </ion-nav-buttons>
+  <ion-content>
+  <div class="bar  custom-blue" style="height:26%;">
+    <div style="width: 45%; float:left" >
+      <img class="avatar" src="{{profilePic}}">
+    </div>
+    <div id= "usernameFonts" style="width: 55%; float:right">
+      <br><b>{{fullName}}</b></br>
+      <br><b>Posts:</b> {{userPhotos.length}}</br>
+      <br><b>Likes:</b> {{totalLikes()}}</br>
+    </div>
+  </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>   
+    <div id= "fontID" class="row" ng-repeat="photo in userPhotos | orderBy: '-ID'">
+      <div id= "fontID" class= "col col-100" >
+        <div class="row">
+          <div id= "fontID" class="col col-50">
+             <i>{{photo.Username}}</i>
+          </div>
+          <div class="col col-50 text-right">
+             <i>{{photo.Date}}</i>
+          </div>
+        </div>
+        <img class="avatar2" src="{{photo.PicSource}}">
+        <div id= "fontID" class="row">
+          <div class="col col-30">
+            <button class="button button-small button-clear" ng-click="likePic({{photo}})">  
+            <img ng-show="isLiked({{photo}})" src="/img/clicked.png">
+              <img ng-show="!isLiked({{photo}})" src="/img/notclicked.png">   
+            </button>
+             <button class="button button-small button-clear" ng-click="selectedPic({{photo}})" ui-sref="tab.home-comments">
+               <img src="/img/comments.png">
+            </button>
+          </div> 
+          <div class="col col-20 text-right"> 
+            <button class="button-clear">DELETE</button>
+          </div> 
+        </div>
+        <div class="row">
+          <div>
+          <span>{{photo.Caption}}</span>
+          </div>
+        </div>
+        
+      </div>    
+    </div>  
+  </ion-content>
+</ion-view>
