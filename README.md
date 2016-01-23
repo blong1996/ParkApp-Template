@@ -9,4 +9,5 @@ The app was built using the Ionic Framework and is ran using the terminal comman
 # Developers:
 
 Brandon Long
+
 Zachary Cafarelli
